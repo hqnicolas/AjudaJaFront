@@ -1,0 +1,18 @@
+services:
+  frontend:
+    container_name: AjudaJa
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./vite.config.js:/app/vite.config.js
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - .:/app
+      - /app/node_modules
+    environment:
+      VITE_API_URL: http://localhost:5173
