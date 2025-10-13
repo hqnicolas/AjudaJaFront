@@ -19,7 +19,7 @@ export default function Forms() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
-    <Container>
+    <Container >
       <Form className="forms">
         <img src={logo_ajude_ja} alt="logo ajude já" />
 
@@ -58,20 +58,24 @@ export default function Forms() {
                 onClick={() => setShowPass(!showPass)}
                 style={{ cursor: 'pointer' }}
               >
-                {showPass ? <i className="fa-regular fa-eye-slash" /> :  <i className="fa-regular fa-eye" />}
-               
+                {showPass
+                  ? <i className="fa-regular fa-eye-slash" />
+                  : <i className="fa-regular fa-eye" />}
               </InputGroup.Text>
             </InputGroup>
           </Col>
         </Row>
-        <span  className='change-form'>Já tem uma conta?
-           <span  className='change-form-child' onClick={changeForm()}>Entre</span>.
+
+        <span className="change-form">
+          Já tem uma conta?
+          <span className="change-form-child" onClick={changeForm}>Entre</span>.
         </span>
+
         <Button
-        text={'Cadastrar'}
-        typeButton={'primary'}
-        className='btn-submit'
-        ></Button>
+          text={'Cadastrar'}
+          typeButton={'primary'}
+          className="btn-submit"
+        />
       </Form>
     </Container>
   );

@@ -1,17 +1,23 @@
+// src/App.jsx
+
+import { Outlet, useLocation } from 'react-router-dom';
 import { Container } from './App.styles.jsx'
 import Header from './components/header/Header.jsx'
 
-import Login from './views/Login/Login'
-
 function App() {
 
+  const location = useLocation();
+
+  const showHeader = location.pathname !== '/login';
 
   return (
     <Container>
-      <Header/>
-      <Login></Login>
+      {showHeader && <Header />}
+      <main>
+        <Outlet />
+      </main>
     </Container>
   )
 }
 
-export default App
+export default App;

@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100%;
-  height: 40rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-
+  width: 100%;
+  height: 100vh;
   .forms {
     display: flex;
     align-items: center;
