@@ -74,7 +74,7 @@ Siga os passos abaixo para clonar e executar o projeto em seu ambiente local.
 4.  **Instale as dependências:**
 
     ```bash
-    docker compose build
+    docker compose build --no-cache
     ```
 
 5.  **Inicie a aplicação:**

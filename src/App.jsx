@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Container } from './App.styles.jsx'
-import Header from '/components/header/Header.jsx'
+import Header from './components/Header/Header.jsx';
 
 function App() {
 
