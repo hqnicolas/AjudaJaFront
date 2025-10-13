@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-
+margin-bottom: 3rem;
   .navbar-left{
     display: flex;
     align-items: center;
