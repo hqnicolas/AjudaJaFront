@@ -2,18 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  width: 100%;
-  height: 100vh;
+width: 30%;
   .forms {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 25%;
+    width: 100%;
     height: auto;
     padding: 2rem;
     border: 3px solid #e0e0e0;

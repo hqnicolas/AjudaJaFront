@@ -3,15 +3,15 @@ import { Container } from './Forms.styles';
 import { Form, Col, InputGroup, Row } from 'react-bootstrap';
 import { logo_ajude_ja } from '../../assets/logo';
 import Button from '../Button/Button';
-import { set } from 'lodash';
-
+import { useNavigate } from 'react-router-dom';
 export default function Forms() {
   const formRef = useRef();
+const navigate = useNavigate()
   const [showPass, setShowPass] = useState(false);
   const [typeForm, setTypeForm] = useState('register');
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    email: '', 
     password: ''
   });
 
@@ -19,14 +19,34 @@ export default function Forms() {
     setTypeForm(typeForm === 'register' ? 'login' : 'register');
     setFormData({ name: '', email: '', password: '' });
   };
-  const handleSubmit = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value }
+  
+  const handleChange = (e) => {
 
+    const { name, value } = e.target;
+    setFormData({ 
+      ...formData, 
+      [name]: value 
+    });
+  }
 
-    );
+  
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    
+    if (typeForm === 'register') {
+      console.log('Dados de Cadastro:', formData);
+    // Aqui tu chama a rota de cadastrar
+    } else {
+      console.log('Dados de Login:', formData);
+      // Aqui tu chama a rota de login
+    }
+   navigate('/ajude-ja/inicio')
+  }
+
 
   return (
     <Container>
+
       <Form className="forms" onSubmit={handleSubmit} ref={formRef}>
         <img src={logo_ajude_ja} alt="logo ajude já" />
 
@@ -54,9 +74,9 @@ export default function Forms() {
               <InputGroup.Text><i className="fa-solid fa-envelope" /></InputGroup.Text>
               <Form.Control
                 type="email"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
+                name="email"
+                value={formData.email}
+                  onChange={handleChange}
                 placeholder="user@example.com"
                 required={true}
               />
@@ -72,7 +92,7 @@ export default function Forms() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="***********"
-                 required={true}
+                  required={true}
               />
               <InputGroup.Text
                 onClick={() => setShowPass(!showPass)}

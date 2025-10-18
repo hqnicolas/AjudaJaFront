@@ -1,7 +1,8 @@
-import { Nav, Navbar, Container } from 'react-bootstrap';
+
 import { CenterNav, HeaderContainer } from './Header.styles.jsx';
 import { logo_ajude_ja_minimizada } from '../../assets/logo/index.jsx';
 import Button from '../Button/Button.jsx';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -15,10 +16,10 @@ export default function Header() {
             </div>
             <div className="navbar-center">
                 <CenterNav>
-                    <Nav.Link href="#campanhas">Campanhas</Nav.Link>
-                    <Nav.Link href="#ongs">Ong's</Nav.Link>
-                    <Nav.Link href="#noticias">Notícias</Nav.Link>
-                    <Nav.Link href="#sobre">Sobre nós</Nav.Link>
+                    <Link to="campanhas">Campanhas</Link>
+                    <Link to="ongs">Ong's</Link>
+                    <Link to="noticias">Notícias</Link>
+                    <Link to="sobre">Sobre nós</Link>
                 </CenterNav>
             </div>
 
