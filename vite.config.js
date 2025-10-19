@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react({
@@ -12,5 +11,8 @@ export default defineConfig({
   ],
   server: {
     allowedHosts: ['ajuda.acoder.com.br'],
+  },
+  define: {
+    'import.meta.env.VITE_API_BASE_URL': JSON.stringify('https://n3.acoder.com.br/'),
   },
 })
