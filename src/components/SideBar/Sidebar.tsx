@@ -9,7 +9,7 @@ import {
   CButton
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilFile, cilGraph, cilHeart, cilUser, cilMenu } from '@coreui/icons'
+import { cilFile, cilGraph, cilHeart, cilUser, cilMenu, cilBell } from '@coreui/icons'
 import { logo_ajude_ja_minimizada } from '../../assets/logo'
 
 
@@ -47,19 +47,18 @@ export default function Sidebar() {
             <img src={logo_ajude_ja_minimizada} alt="Logo" width={'30px'} />
           </CSidebarBrand>
         </CSidebarHeader>
-
         <CSidebarNav>
           <CNavTitle>Administração</CNavTitle>
-          <CNavItem href="#">
+          <CNavItem href="/ajude-ja/campanhas">
             <CIcon customClassName="nav-icon" icon={cilGraph} /> Campanhas
           </CNavItem>
-          <CNavItem href="#">
-            <CIcon customClassName="nav-icon" icon={cilHeart} /> Doações
-          </CNavItem>
-          <CNavItem href="#">
+          <CNavItem href="/ajude-ja/usuarios">
             <CIcon customClassName="nav-icon" icon={cilUser} /> Usuários
           </CNavItem>
-          <CNavItem href="#">
+          <CNavItem href="/ajude-ja/mensagens">
+            <CIcon customClassName="nav-icon" icon={cilBell} /> Mensagens
+          </CNavItem>
+          <CNavItem href="/ajude-ja/relatorios/gerar">
             <CIcon customClassName="nav-icon" icon={cilFile} /> Relatórios
           </CNavItem>
         </CSidebarNav>
