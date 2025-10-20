@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { logo_ajude_ja_minimizada } from '../../assets/logo/index.jsx'
 import {HeaderContainer} from './Header.styles.jsx'
+import Sidebar from '../SideBar/Sidebar.js'
 
 
 export default function Header() {
@@ -22,20 +23,21 @@ export default function Header() {
  <CNavbar expand="lg" colorScheme="light" className="bg-white shadow-sm fixed-top">
   <HeaderContainer fluid className="px-4">
 
-
     <CNavbarToggler
       aria-label="Toggle navigation"
       onClick={() => setVisible(!visible)}
       className="me-2" 
-    />
+      />
+     
 
 
     <CNavbarBrand as={Link} to="/ajude-ja/inicio" className="d-flex align-items-center navbar-left">
       <img
         src={logo_ajude_ja_minimizada}
         style={{ width: '2.5rem', height: 'auto', marginRight: '0.5rem' }}
-      />
+        /> 
     </CNavbarBrand>
+        {!visible &&( <Sidebar/>)}
 
   <CCollapse className="navbar-collapse" visible={visible}>
   <CNavbarNav className="mx-auto flex-lg-row flex-column">

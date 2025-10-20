@@ -12,10 +12,10 @@ function App() {
   return (
     <Container>
       {showHeader && <Header />}
+
       <main>
         <Outlet />
       </main>
-       <Sidebar/>
     </Container>
   )
 }

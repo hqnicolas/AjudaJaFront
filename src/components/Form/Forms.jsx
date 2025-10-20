@@ -54,8 +54,8 @@ export default function FormsCoreUI() {
 
   return (
     <Container>
-      <CForm className="forms p-4 rounded shadow-sm" onSubmit={handleSubmit} ref={formRef}>
-        <div className="text-center mb-3">
+      <CForm className="forms  rounded shadow-sm" onSubmit={handleSubmit} ref={formRef}>
+        <div className="text-center ">
           <img src={logo_ajude_ja} alt="logo ajude já" style={{ maxWidth: '150px' }} />
         </div>
 
@@ -137,7 +137,7 @@ export default function FormsCoreUI() {
           </span>
         </div>
 
-        <div className="text-center">
+        <div className="btn-submit">
           <Button typeButton="primary" type="submit" className="">
             {typeForm === 'register' ? 'Cadastrar' : 'Entrar'}
           </Button>
