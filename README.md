@@ -67,7 +67,7 @@ Siga os passos abaixo para clonar e executar o projeto em seu ambiente local.
 
     ```bash
     //vite.config.js
-    allowedHosts: ['ajuda.acoder.com.br'],
+    allowedHosts: ['ajudaja.acoder.com.br'],
     ```
     
 
