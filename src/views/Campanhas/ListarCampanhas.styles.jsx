@@ -39,14 +39,15 @@ export const ContainerCampaigns = styled.div`
     width: 100%;
     justify-content: center;
     text-align: center;
-
+    flex: 1;
     .card {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border-radius: 8px;
-      width: 300px; /* largura base */
+      width: 25%; 
+      height: 22rem;
       border: 1px solid #ddd;
       background-color: var(--color-primary); 
       color: var(--color-text-secondary);
