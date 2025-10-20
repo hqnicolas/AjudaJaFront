@@ -11,8 +11,16 @@ export default defineConfig({
   ],
   server: {
     allowedHosts: ['ajudaja.acoder.com.br'],
+    proxy: {
+      '/api': {
+        target: 'https://n3.acoder.com.br',
+        changeOrigin: true,
+        secure: false,
+        rewrite: path => path.replace(/^\/api/, ''),
+      },
+    },
   },
   define: {
-    'import.meta.env.VITE_API_BASE_URL': JSON.stringify('https://n3.acoder.com.br/'),
+    'import.meta.env.VITE_API_BASE_URL': JSON.stringify('/api/'),
   },
 })
