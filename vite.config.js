@@ -10,7 +10,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    allowedHosts: ['ajudaja.acoder.com.br'],
+    allowedHosts: ['ajudaja.acoder.com.br', 'ajuda.acoder.com.br'],
     proxy: {
       '/api': {
         target: 'https://n3.acoder.com.br',
