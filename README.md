@@ -47,7 +47,7 @@ Siga os passos abaixo para clonar e executar o projeto em seu ambiente local.
 
   * [Node.js](https://nodejs.org/en/) (versão 22)
 
-  * Uma instância do [back-end do projeto](https://github.com/hqnicolas/n3backend) rodando *https://n3.acoder.com.br/*.
+  * Uma instância do [back-end do projeto](https://github.com/hqnicolas/AjudaJaServer) rodando *https://n3.acoder.com.br/*.
 
 ### Passos
 
