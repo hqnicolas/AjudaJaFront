@@ -23,4 +23,25 @@ body {
   font-family: "Sora", sans-serif;
   background-color: var(--color-background);
   width: 100vw;
+
+  scrollbar-width: 1px; 
+    scrollbar-color: var(--color-primary) transparent;
+
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-primary);
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      transition: background-color 0.3s;
+    }
+
+  
 }

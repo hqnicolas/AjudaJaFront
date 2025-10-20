@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
-
+import '@coreui/coreui/dist/css/coreui.min.css'
 
 import ListarCampanhas from './views/Campanhas/ListarCampanhas.jsx';
 import NovaDoacao from './views/Campanhas/Nova/Nova.jsx';
-import EditarDoacao from './views/Campanhas/Editar/EditarCampanhas.jsx';
+import EditarCampanhas from './views/Campanhas/Editar/EditarCampanhas.jsx';
 import DetalhesDoacao from './views/Campanhas/Detalhes/Detalhes.jsx';
 import GerarRelatorio from './views/Relatorios/Gerar';
 import ExportarRelatorio from './views/Relatorios/Exportar';
@@ -29,14 +29,12 @@ createRoot(document.getElementById('root')).render(
 
         <Route path="/" element={<Login />} />
         <Route path="/ajude-ja" element={<App />}>
-
           <Route path="/ajude-ja/inicio" element={<Home />} />
 
-          <Route path="/ajude-ja/campanhas" element={<ListarCampanhas />} >
-            <Route path="/ajude-ja/campanhas/nova" element={<NovaDoacao />} />
-            <Route path="/ajude-ja/campanhas/editar/:id" element={<EditarDoacao />} />
-            <Route path="/ajude-ja/campanhas/detalhes/:id" element={<DetalhesDoacao />} />
-          </Route>
+          <Route path="/ajude-ja/campanhas" element={<ListarCampanhas />} />
+          <Route path="/ajude-ja/campanhas/doar/:id" element={<NovaDoacao />} />
+          <Route path="/ajude-ja/campanhas/editar/:id" element={<EditarCampanhas />} />
+          <Route path="/ajude-ja/campanhas/detalhes/:id" element={<DetalhesDoacao />} />
           <Route path="/ajude-ja/relatorios/gerar" element={<GerarRelatorio />} />
           <Route path="/ajude-ja/relatorios/exportar" element={<ExportarRelatorio />} />
 

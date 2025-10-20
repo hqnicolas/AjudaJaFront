@@ -1,132 +1,148 @@
 import { useRef, useState } from 'react';
 import { Container } from './Forms.styles';
-import { Form, Col, InputGroup, Row } from 'react-bootstrap';
+import {
+  CForm,
+  CFormInput,
+  CFormLabel,
+  CInputGroup,
+  CInputGroupText,
+  CRow,
+  CCol,
+  CButton,
+} from '@coreui/react';
 import { logo_ajude_ja } from '../../assets/logo';
-import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
-export default function Forms() {
+import Button from '../Button/Button';
+
+export default function FormsCoreUI() {
   const formRef = useRef();
-const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const [showPass, setShowPass] = useState(false);
   const [typeForm, setTypeForm] = useState('register');
   const [formData, setFormData] = useState({
     name: '',
-    email: '', 
-    password: ''
+    email: '',
+    password: '',
   });
 
   const changeForm = () => {
     setTypeForm(typeForm === 'register' ? 'login' : 'register');
     setFormData({ name: '', email: '', password: '' });
   };
-  
+
   const handleChange = (e) => {
-
     const { name, value } = e.target;
-    setFormData({ 
-      ...formData, 
-      [name]: value 
+    setFormData({
+      ...formData,
+      [name]: value,
     });
-  }
+  };
 
-  
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    
+    e.preventDefault();
+
     if (typeForm === 'register') {
       console.log('Dados de Cadastro:', formData);
-    // Aqui tu chama a rota de cadastrar
+      // Chame sua rota de cadastro aqui
     } else {
       console.log('Dados de Login:', formData);
-      // Aqui tu chama a rota de login
+      // Chame sua rota de login aqui
     }
-   navigate('/ajude-ja/inicio')
-  }
-
+    navigate('/ajude-ja/inicio');
+  };
 
   return (
     <Container>
+      <CForm className="forms p-4 rounded shadow-sm" onSubmit={handleSubmit} ref={formRef}>
+        <div className="text-center mb-3">
+          <img src={logo_ajude_ja} alt="logo ajude já" style={{ maxWidth: '150px' }} />
+        </div>
 
-      <Form className="forms" onSubmit={handleSubmit} ref={formRef}>
-        <img src={logo_ajude_ja} alt="logo ajude já" />
-
-        <Row className="form-items">
+        <CRow className="g-3">
           {typeForm === 'register' && (
-            <Col md={12}>
-              <Form.Label>Nome Completo</Form.Label>
-              <InputGroup>
-                <InputGroup.Text><i className="fa-solid fa-user" /></InputGroup.Text>
-                <Form.Control
+            <CCol md={12}>
+              <CFormLabel htmlFor="name">Nome Completo</CFormLabel>
+              <CInputGroup>
+                <CInputGroupText>
+                  <i className="fa-solid fa-user" />
+                </CInputGroupText>
+                <CFormInput
                   type="text"
                   name="name"
+                  id="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Nome completo"
-                  required={true}
+                  required
                 />
-              </InputGroup>
-            </Col>
+              </CInputGroup>
+            </CCol>
           )}
 
-          <Col md={12}>
-            <Form.Label>E-mail</Form.Label>
-            <InputGroup>
-              <InputGroup.Text><i className="fa-solid fa-envelope" /></InputGroup.Text>
-              <Form.Control
+          <CCol md={12}>
+            <CFormLabel htmlFor="email">E-mail</CFormLabel>
+            <CInputGroup>
+              <CInputGroupText>
+                <i className="fa-solid fa-envelope" />
+              </CInputGroupText>
+              <CFormInput
                 type="email"
                 name="email"
+                id="email"
                 value={formData.email}
-                  onChange={handleChange}
+                onChange={handleChange}
                 placeholder="user@example.com"
-                required={true}
+                required
               />
-            </InputGroup>
-          </Col>
-          <Col md={12}>
-            <Form.Label>Senha</Form.Label>
-            <InputGroup>
-              <InputGroup.Text><i className="fa-solid fa-lock" /></InputGroup.Text>
-              <Form.Control
+            </CInputGroup>
+          </CCol>
+
+          <CCol md={12}>
+            <CFormLabel htmlFor="password">Senha</CFormLabel>
+            <CInputGroup>
+              <CInputGroupText>
+                <i className="fa-solid fa-lock" />
+              </CInputGroupText>
+              <CFormInput
                 type={showPass ? 'text' : 'password'}
                 name="password"
+                id="password"
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="***********"
-                  required={true}
+                required
               />
-              <InputGroup.Text
+              <CInputGroupText
                 onClick={() => setShowPass(!showPass)}
                 style={{ cursor: 'pointer' }}
               >
-                {showPass
-                  ? <i className="fa-regular fa-eye-slash" />
-                  : <i className="fa-regular fa-eye" />}
-              </InputGroup.Text>
-            </InputGroup>
-          </Col>
-        </Row>
-        <span className="change-form">
-          {typeForm === 'register' ? 'Já possui uma conta? ' : 'Ainda não possui uma conta? '}
-          <span className="change-form-child" onClick={changeForm}>
-            {typeForm === 'register' ? 'Entre' : 'Cadastre-se'}
-          </span>.
-        </span>
+                {showPass ? (
+                  <i className="fa-regular fa-eye-slash" />
+                ) : (
+                  <i className="fa-regular fa-eye" />
+                )}
+              </CInputGroupText>
+            </CInputGroup>
+          </CCol>
+        </CRow>
 
+        <div className="text-center mt-3 mb-3">
+          <span className="change-form">
+            {typeForm === 'register' ? 'Já possui uma conta? ' : 'Ainda não possui uma conta? '}
+            <span className="change-form-child" style={{ cursor: 'pointer', fontWeight: 'bold' }} onClick={changeForm}>
+              {typeForm === 'register' ? 'Entre' : 'Cadastre-se'}
+            </span>
+            .
+          </span>
+        </div>
 
-        {typeForm === 'register' ? (
-          <Button
-            text={'Cadastrar'}
-            typeButton={'primary'}
-            className="btn-submit"
-          />
-        ) : (
-          <Button
-            text={'Entrar'}
-            typeButton={'primary'}
-            className="btn-submit"
-          />
-        )}
-      </Form>
+        <div className="text-center">
+          <Button typeButton="primary" type="submit" className="">
+            {typeForm === 'register' ? 'Cadastrar' : 'Entrar'}
+          </Button>
+        </div>
+      </CForm>
     </Container>
   );
 }

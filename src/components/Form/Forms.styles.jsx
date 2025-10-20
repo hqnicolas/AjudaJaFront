@@ -17,12 +17,6 @@ width: 30%;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
     .input-group {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background-color: #D9D9D9;
-      width: 100%;
-      border-radius: 4px;
 
       i {
         padding: 0.5rem;
@@ -83,8 +77,8 @@ width: 30%;
     }
 
     .btn-submit {
-      margin-top: 2rem;
-      width: 60%;
+      margin: 0 auto;
+      width: 100%;
     }
   }
 
