@@ -28,7 +28,7 @@ const Editar = () => {
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   const { id } = useParams();
-  const navigate = useNavigate(); // Hook para navegação programática
+  const navigate = useNavigate();
   const url = `${API_BASE_URL}api/mensagens/${id}`;
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const Editar = () => {
         if (res.status === 204) {
           setMessage('Mensagem excluída com sucesso!');
           setMensagem({});
-          navigate("/ajude-ja/mensagens"); // Redireciona após a exclusão
+          navigate("/ajude-ja/mensagens");
         } else if (res.status === 404) {
           setError('Mensagem não encontrada');
         } else {
@@ -104,8 +104,6 @@ const Editar = () => {
           <button onClick={handleDelete} style={{ marginLeft: 10, backgroundColor: 'red', color: 'white' }}>
             Excluir
           </button>
-
-          {/* Links de navegação */}
           <div style={{ marginTop: '20px' }}>
             <Link to={`/ajude-ja/mensagens/detalhes/${id}`} style={{ marginRight: '10px' }}>
               Ver Detalhes

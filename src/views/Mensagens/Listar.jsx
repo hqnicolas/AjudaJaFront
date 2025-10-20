@@ -6,15 +6,13 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Mensagem = ({ mensagem, index }) => (
   <div style={{ marginBottom: "20px" }}>
-    <h3>ID: {index + 1}</h3> {/* A numeração do ID começa a partir de 1, com base no índice da lista */}
+    <h3>ID: {index + 1}</h3>
     <h3>Conteúdo</h3>
     <p>{mensagem.conteudo}</p>
     <p>
       <strong>Enviada em:</strong>{" "}
       {new Date(mensagem.dataEnvio).toLocaleString("pt-BR")}
     </p>
-    
-    {/* Botões de Editar e Detalhes */}
     <div>
       <Link to={`/ajude-ja/mensagens/editar/${index + 1}`}>
         <Button typeButton="secondary">Editar</Button>
@@ -38,7 +36,7 @@ const Listar = () => {
         return res.json();
       })
       .then((data) => {
-        setMensagens(data); // O backend retorna uma lista de objetos com 'conteudo' e 'dataEnvio'
+        setMensagens(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -59,8 +57,6 @@ const Listar = () => {
           <Button typeButton="primary">+ Criar Nova Mensagem</Button>
         </Link>
       </div>
-
-      {/* Lista de mensagens */}
       {mensagens.length === 0 ? (
         <p>Nenhuma mensagem encontrada.</p>
       ) : (

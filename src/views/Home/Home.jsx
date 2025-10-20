@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <Container>
       <CRow className="content-container justify-content-center align-items-center text-center text-md-start flex-column-reverse flex-md-row">
-        {/* Texto */}
         <CCol xs={12} md={6} lg={5}>
           <h1>
             Transforme Vidas <br />

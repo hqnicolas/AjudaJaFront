@@ -6,7 +6,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Detalhes = () => {
   const { id } = useParams();
   const [mensagem, setMensagem] = useState(null);
-  const navigate = useNavigate(); // Hook para navegação programática
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!id) return;
@@ -33,8 +33,6 @@ const Detalhes = () => {
       <h1>Detalhes da Mensagem</h1>
       <p><strong>Conteúdo:</strong> {mensagem.conteudo}</p>
       <p><strong>Data de Envio:</strong> {formatarData(mensagem.dataEnvio)}</p>
-
-      {/* Links para navegação */}
       <div>
         <Link to="/ajude-ja/mensagens" style={{ marginRight: '10px' }}>
           Voltar para Lista de Mensagens

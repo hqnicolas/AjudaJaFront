@@ -8,7 +8,7 @@ import '@coreui/coreui/dist/css/coreui.min.css';
 import ListarCampanhas from './views/Campanhas/ListarCampanhas.jsx';
 import NovaDoacao from './views/Campanhas/Nova/Nova.jsx';
 import EditarCampanhas from './views/Campanhas/Editar/EditarCampanhas.jsx';
-import DetalhesDoacao from './views/Campanhas/Detalhes/Detalhes.jsx';
+import DetalhesCampanha from './views/Campanhas/Detalhes/Detalhes.jsx';
 import GerarRelatorio from './views/Relatorios/Gerar';
 import ExportarRelatorio from './views/Relatorios/Exportar';
 import ListarMensagens from './views/Mensagens/Listar';
@@ -23,6 +23,8 @@ import Login from './views/Login/Login.jsx';
 import Home from './views/Home/Home.jsx';
 import ListarDoacoes from './views/Doacoes/Listar.jsx';
 import NovoDoacao from './views/Doacoes/Novo.jsx';
+import DetalhesDoacao from './views/Doacoes/Detalhes';
+import EditarDoacao from './views/Doacoes/Editar'; 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -36,7 +38,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/ajude-ja/campanhas" element={<ListarCampanhas />} />
           <Route path="/ajude-ja/campanhas/doar/:id" element={<NovaDoacao />} />
           <Route path="/ajude-ja/campanhas/editar/:id" element={<EditarCampanhas />} />
-          <Route path="/ajude-ja/campanhas/detalhes/:id" element={<DetalhesDoacao />} />
+          <Route path="/ajude-ja/campanhas/detalhes/:id" element={<DetalhesCampanha />} />
 
           <Route path="/ajude-ja/relatorios/gerar" element={<GerarRelatorio />} />
           <Route path="/ajude-ja/relatorios/exportar" element={<ExportarRelatorio />} />
@@ -53,6 +55,8 @@ createRoot(document.getElementById('root')).render(
 
           <Route path="/ajude-ja/doacoes" element={<ListarDoacoes />} />
           <Route path="/ajude-ja/doacoes/novo" element={<NovoDoacao />} />
+          <Route path="/ajude-ja/doacoes/editar/:id" element={<EditarDoacao />} />
+          <Route path="/ajude-ja/doacoes/detalhes/:id" element={<DetalhesDoacao />} />
         </Route>
 
         <Route path="/login" element={<Login />} />

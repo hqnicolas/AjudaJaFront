@@ -30,6 +30,16 @@ const Doacao = ({ doacao }) => {
       <p>Doador: {doacao.donor}</p>
       <p>Data de Recebimento: {doacao.receiverDate}</p>
       <p>Data de Expiração: {doacao.expiryDate}</p>
+
+      <div>
+        {/* Botões de Editar e Ver Detalhes */}
+        <Link to={`/ajude-ja/doacoes/editar/${doacao.id}`}>
+          <Button typeButton="secondary">Editar</Button>
+        </Link>
+        <Link to={`/ajude-ja/doacoes/detalhes/${doacao.id}`}>
+          <Button typeButton="primary">Ver Detalhes</Button>
+        </Link>
+      </div>
     </div>
   );
 };

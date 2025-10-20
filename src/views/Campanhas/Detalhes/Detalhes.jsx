@@ -25,8 +25,6 @@ export default function Detalhes() {
               nulla pariatur, itaque voluptas maiores eius cumque tempora eveniet.
             </p>
           </div>
-
-          {/* Adicionando os botões */}
           <div className="button-container">
             <Link to="/ajude-ja/doacoes/novo">
               <Button typeButton="primary">Criar Nova Doação</Button>
