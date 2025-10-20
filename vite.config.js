@@ -13,6 +13,6 @@ export default defineConfig({
     allowedHosts: ['ajuda.acoder.com.br'],
   },
   define: {
-    'import.meta.env.VITE_API_BASE_URL': JSON.stringify('https://n3.acoder.com.br/'),
+    'import.meta.env.VITE_API_BASE_URL': JSON.stringify('https://ajuda.acoder.com.br/api/'),
   },
 })
