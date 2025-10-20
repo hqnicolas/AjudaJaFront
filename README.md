@@ -1,5 +1,5 @@
 # Sistema de Gerenciamento de Doações
-[Projeto Final de Soluções Mobile](/Requirements.md)
+[Projeto Final](/Requirements.md)
 
 [Motivação e Conclusões](/Proposta.md)
 
@@ -67,7 +67,7 @@ Siga os passos abaixo para clonar e executar o projeto em seu ambiente local.
 
     ```bash
     //vite.config.js
-    allowedHosts: ['ajuda.acoder.com.br'],
+    allowedHosts: ['ajudaja.acoder.com.br'],
     ```
     
 
