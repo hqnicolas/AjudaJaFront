@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -55,13 +57,13 @@ const UserForm = ({ user, onChange }) => {
 };
 
 const Editar = () => {
-  const userId = 1; // hardcoded for now, can be from route params or props
+  const { id } = useParams();
+  console.log('userId:', id);
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
-
-  const url = `${API_BASE_URL}users/${userId}`;
+  const url = `${API_BASE_URL}users/${id}`;
 
   useEffect(() => {
     setLoading(true);
@@ -131,10 +133,14 @@ const Editar = () => {
       {!loading && user && Object.keys(user).length > 0 && (
         <>
           <UserForm user={user} onChange={handleChange} />
-          <button onClick={handleSubmit}>Salvar</button>
-          <button onClick={handleDelete} style={{ marginLeft: 10, backgroundColor: 'red', color: 'white' }}>
+          <Button typeButton="primary" onClick={handleSubmit}>Salvar</Button>
+          <Button 
+            typeButton="danger" 
+            onClick={handleDelete} 
+            style={{ marginLeft: 10 }}
+          >
             Excluir
-          </button>
+          </Button>
         </>
       )}
     </div>
