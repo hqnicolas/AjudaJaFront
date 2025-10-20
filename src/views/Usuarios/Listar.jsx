@@ -29,12 +29,8 @@ const Usuario = ({ user }) => {
       <p>Email: {user.email}</p>
       <p>Localização: {user.location}</p>
       <p>Interesses: {user.interests}</p>
-      
-      {/* Replace Link with Button for View Details */}
       <Button typeButton="primary" onClick={handleViewDetails}>Ver Detalhes</Button>
       <br />
-      
-      {/* Replace Link with Button for Edit */}
       <Button typeButton="secondary" onClick={handleEdit}>Editar</Button>
     </div>
   );
@@ -67,15 +63,11 @@ const Listar = () => {
   return (
     <div style={{ padding: 20 }}>
       <h2>Lista de Usuários</h2>
-
-      {/* Novo Usuário */}
       <div style={{ marginBottom: 20 }}>
         <Link to="/ajude-ja/usuarios/novo">
           <Button typeButton="primary">+ Criar Novo Usuário</Button>
         </Link>
       </div>
-
-      {/* Lista de usuários */}
       {usuarios.length === 0 ? (
         <p>Nenhum usuário encontrado.</p>
       ) : (
