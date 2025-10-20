@@ -8,7 +8,7 @@ const RelatorioItem = ({ relatorio }) => (
   <div style={{ marginBottom: "20px" }}>
     <h3>ID: {relatorio.id}</h3>
     <h3>Nome da Doação: {relatorio.name}</h3>
-    <p><strong>Tipo:</strong> {relatorio.type}</p>
+    <p><strong>Tipo:</strong> {relatorio.donationType}</p>
     <p><strong>Quantidade:</strong> {relatorio.quantity}</p>
     <p><strong>Doador:</strong> {relatorio.donor}</p>
     <p><strong>Data de Recebimento:</strong> {new Date(relatorio.receiverDate).toLocaleDateString("pt-BR")}</p>
@@ -23,7 +23,7 @@ const RelatorioItem = ({ relatorio }) => (
 const Gerar = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [type, setType] = useState('');
+  const [donationType, setDonationType] = useState('');
   const [donor, setDonor] = useState('');
   const [relatorios, setRelatorios] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,24 +35,15 @@ const Gerar = () => {
     setLoading(true);
     setError(null);
 
-    const requestBody = {
-      startDate,
-      endDate,
-      type,
-      donor,
-    };
-
     try {
-      const res = await fetch(`${API_BASE_URL}api/relatorio`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
+      const url = `${API_BASE_URL}donation/reports/generate/${startDate}/${endDate}/${donationType}/${donor}`;
+
+      const res = await fetch(url, {
+        method: 'GET',
       });
 
       if (!res.ok) throw new Error('Erro ao gerar relatório');
-      
+
       const data = await res.json();
       setRelatorios(data);
     } catch (err) {
@@ -74,6 +65,7 @@ const Gerar = () => {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
+              required
             />
           </label>
         </div>
@@ -85,6 +77,7 @@ const Gerar = () => {
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
+              required
             />
           </label>
         </div>
@@ -93,8 +86,9 @@ const Gerar = () => {
           <label>
             Tipo de Doação:
             <select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
+              value={donationType}
+              onChange={(e) => setDonationType(e.target.value)}
+              required
             >
               <option value="">Selecione</option>
               <option value="Material">Material</option>
@@ -110,6 +104,7 @@ const Gerar = () => {
               type="text"
               value={donor}
               onChange={(e) => setDonor(e.target.value)}
+              required
             />
           </label>
         </div>
@@ -131,6 +126,7 @@ const Gerar = () => {
           ))
         )}
       </div>
+
       <div>
         <Link to="/ajude-ja/relatorios/exportar">
           <Button typeButton="secondary">Exportar Relatório</Button>
