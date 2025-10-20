@@ -1,14 +1,14 @@
 import { Container, NewDonationContainer } from "./Detalhes.styles";
 import CardComponent from "../../../components/Card/Card";
-
-
+import { Link } from "react-router-dom";
+import Button from "../../../components/Button/Button";
 
 export default function Detalhes() {
   return (
-    <Container >
+    <Container>
       <CardComponent>
         <NewDonationContainer>
-            <h2>Título</h2>
+          <h2>Título</h2>
           <div className="content-donation">
             <div className="image">
               <img
@@ -23,15 +23,20 @@ export default function Detalhes() {
               Impedit, error ea. Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Deleniti vel quidem nesciunt, aliquid placeat dolorum voluptates
               nulla pariatur, itaque voluptas maiores eius cumque tempora eveniet.
-             
             </p>
           </div>
 
-          
+          {/* Adicionando os botões */}
+          <div className="button-container">
+            <Link to="/ajude-ja/doacoes/novo">
+              <Button typeButton="primary">Criar Nova Doação</Button>
+            </Link>
+            <Link to="/ajude-ja/doacoes">
+              <Button typeButton="secondary">Listar Doações</Button>
+            </Link>
+          </div>
         </NewDonationContainer>
-
       </CardComponent>
     </Container>
   );
-};
-
+}

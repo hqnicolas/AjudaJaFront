@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
-import '@coreui/coreui/dist/css/coreui.min.css'
+import '@coreui/coreui/dist/css/coreui.min.css';
 
 import ListarCampanhas from './views/Campanhas/ListarCampanhas.jsx';
 import NovaDoacao from './views/Campanhas/Nova/Nova.jsx';
@@ -21,13 +21,15 @@ import EditarUsuario from './views/Usuarios/Editar';
 import DetalhesUsuario from './views/Usuarios/Detalhes';
 import Login from './views/Login/Login.jsx';
 import Home from './views/Home/Home.jsx';
+import ListarDoacoes from './views/Doacoes/Listar.jsx';
+import NovoDoacao from './views/Doacoes/Novo.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
       <Routes>
-
         <Route path="/" element={<Login />} />
+
         <Route path="/ajude-ja" element={<App />}>
           <Route path="/ajude-ja/inicio" element={<Home />} />
 
@@ -35,6 +37,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/ajude-ja/campanhas/doar/:id" element={<NovaDoacao />} />
           <Route path="/ajude-ja/campanhas/editar/:id" element={<EditarCampanhas />} />
           <Route path="/ajude-ja/campanhas/detalhes/:id" element={<DetalhesDoacao />} />
+
           <Route path="/ajude-ja/relatorios/gerar" element={<GerarRelatorio />} />
           <Route path="/ajude-ja/relatorios/exportar" element={<ExportarRelatorio />} />
 
@@ -47,12 +50,13 @@ createRoot(document.getElementById('root')).render(
           <Route path="/ajude-ja/usuarios/novo" element={<NovoUsuario />} />
           <Route path="/ajude-ja/usuarios/editar/:id" element={<EditarUsuario />} />
           <Route path="/ajude-ja/usuarios/detalhes/:id" element={<DetalhesUsuario />} />
+
+          <Route path="/ajude-ja/doacoes" element={<ListarDoacoes />} />
+          <Route path="/ajude-ja/doacoes/novo" element={<NovoDoacao />} />
         </Route>
 
-
         <Route path="/login" element={<Login />} />
-
       </Routes>
     </Router>
-  </StrictMode>,
+  </StrictMode>
 );
