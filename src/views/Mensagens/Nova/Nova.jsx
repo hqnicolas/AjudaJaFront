@@ -6,16 +6,17 @@ import {
     CRow,
     CCol,
     CFormTextarea,
-    CCard,
-    CCardHeader,
-    CCardBody,
-    CButton,
     CSpinner
 } from '@coreui/react';
 
+// Importação do Container de estilos (Nova.styles.js)
+import { Container } from './Nova.styles'; 
+// Assumindo que o componente Button customizado seja necessário
+import Button from '../../../components/Button/Button'; 
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-const Nova = () => {
+export default function Nova() { // Mudado para export default function
     const { id } = useParams();
     const [formData, setFormData] = useState({
         remetenteId: id || '', 
@@ -77,82 +78,72 @@ const Nova = () => {
     };
 
     return (
-        <div className="p-4 d-flex justify-content-center">
-  
-            <CCard className="shadow-sm w-100 w-md-75" style={{ maxWidth: '800px' }}>
-                <CCardHeader>
-                    <h3 className="m-0" style={{ color: "var(--color-primary)" }}>Criar Nova Mensagem</h3>
-                </CCardHeader>
+        <Container>
+            <div className="forms">
+                <h2 className="text-center mb-4">Criar Nova Mensagem</h2>
 
-                <CCardBody>
-                    <CForm onSubmit={handleSubmit}>
-                        <CRow className="g-3">
-                            
-        
+                <CForm onSubmit={handleSubmit}>
+                    <CRow className="g-3">
+                        
+                        {/* Conteúdo da Mensagem */}
+                        <CCol xs={12}>
+                            <CFormLabel htmlFor="conteudo">Conteúdo da Mensagem</CFormLabel>
+                            <CFormTextarea
+                                id="conteudo"
+                                name="conteudo"
+                                value={formData.conteudo}
+                                onChange={handleChange}
+                                rows={6}
+                                placeholder="Digite o texto da sua mensagem aqui..."
+                                required
+                            />
+                        </CCol>
+
+                        {/* ID do Remetente (Opcional, se 'id' existir) */}
+                        {id && (
                             <CCol xs={12}>
-                                <CFormLabel htmlFor="conteudo">Conteúdo da Mensagem</CFormLabel>
-                                <CFormTextarea
-                                    id="conteudo"
-                                    name="conteudo"
-                                    value={formData.conteudo}
+                                <CFormLabel htmlFor="remetenteId">ID do Remetente</CFormLabel>
+                                <CFormInput
+                                    type="text"
+                                    id="remetenteId"
+                                    name="remetenteId"
+                                    value={formData.remetenteId}
                                     onChange={handleChange}
-                                    rows={6}
-                                    placeholder="Digite o texto da sua mensagem aqui..."
-                                    required
+                                    disabled
                                 />
                             </CCol>
+                        )}
+                        
+                    </CRow>
 
-           
-                            {id && (
-                                <CCol xs={12}>
-                                    <CFormLabel htmlFor="remetenteId">ID do Remetente</CFormLabel>
-                                    <CFormTextarea
-                                        id="remetenteId"
-                                        name="remetenteId"
-                                        value={formData.remetenteId}
-                                        onChange={handleChange}
-                                        disabled
-                                    />
-                                </CCol>
+                    {/* Botão de Envio com o estilo de NovoUsuario */}
+                    <div className="btn-submit">
+                        {/* Substituído CButton pelo componente Button customizado */}
+                        <Button typeButton="primary" type="submit" disabled={loading}>
+                            {loading ? (
+                                <>
+                                    <CSpinner component="span" size="sm" aria-hidden="true" className="me-2" />
+                                    Enviando...
+                                </>
+                            ) : (
+                                'Enviar Mensagem'
                             )}
+                        </Button>
+                    </div>
 
-                
-                            <CCol xs={12} className="mt-4 d-flex justify-content-center">
-                                <CButton
-                                    type="submit"
-                                    color="primary"
-                                    disabled={loading}
-                                    className="w-75 w-md-25"
-                                >
-                                    {loading ? (
-                                        <>
-                                            <CSpinner component="span" size="sm" aria-hidden="true" className="me-2" />
-                                            Enviando...
-                                        </>
-                                    ) : (
-                                        'Enviar Mensagem'
-                                    )}
-                                </CButton>
-                            </CCol>
-                        </CRow>
-                    </CForm>
-
-             
+                    {/* Mensagens de Feedback */}
                     {error && (
-                        <div className="mt-3 p-2 text-white bg-danger rounded mx-auto text-center" style={{ maxWidth: '400px' }}>
+                        <p className="text-center mt-3" style={{ color: 'red', fontWeight: '500' }}>
                             {error} 😢
-                        </div>
+                        </p>
                     )}
                     {message && (
-                        <div className="mt-3 p-2 text-white bg-success rounded mx-auto text-center" style={{ maxWidth: '400px' }}>
+                        <p className="text-center mt-3" style={{ color: '#007bff', fontWeight: '500' }}>
                             {message}
-                        </div>
+                        </p>
                     )}
-
-                </CCardBody>
-            </CCard>
-        </div>
+                </CForm>
+            </div>
+        </Container>
     );
-};
-
-export default Nova;
+}

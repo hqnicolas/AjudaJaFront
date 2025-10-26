@@ -22,8 +22,8 @@ import DetalhesUsuario from './views/Usuarios/Detalhes/Detalhes.jsx';
 import Login from './views/Login/Login.jsx';
 import Home from './views/Home/Home.jsx';
 import ListarDoacoes from './views/Doacoes/Listar.jsx';
-import NovoDoacao from './views/Doacoes/Novo.jsx';
-import DetalhesDoacao from './views/Doacoes/Detalhes';
+import NovoDoacao from './views/Doacoes//Nova/Nova.jsx';
+import DetalhesDoacao from './views/Doacoes/Detalhes/Detalhes.jsx';
 import EditarDoacao from './views/Doacoes/Editar';
 import NovoUsuario from './views/Usuarios/Novo/Novo.jsx';
 
