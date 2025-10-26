@@ -3,6 +3,6 @@ import { Container } from "./Card.styles";
 
 export default function CardComponent({children,...props}){
     return (
-       <Container>{children}</Container>
+       <Container className={`${props.className ? props.className : ''}`}>{children}</Container>
     )
 }

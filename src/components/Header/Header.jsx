@@ -13,7 +13,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { logo_ajude_ja_minimizada } from '../../assets/logo/index.jsx'
 import {HeaderContainer} from './Header.styles.jsx'
-import Sidebar from '../SideBar/Sidebar.js'
+import Sidebar from '../SideBar/Sidebar.jsx'
 
 
 export default function Header() {
