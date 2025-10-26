@@ -9,14 +9,12 @@ import {
     CSpinner
 } from '@coreui/react';
 
-// Importação do Container de estilos (Nova.styles.js)
 import { Container } from './Nova.styles'; 
-// Assumindo que o componente Button customizado seja necessário
 import Button from '../../../components/Button/Button'; 
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export default function Nova() { // Mudado para export default function
+export default function Nova() { 
     const { id } = useParams();
     const [formData, setFormData] = useState({
         remetenteId: id || '', 

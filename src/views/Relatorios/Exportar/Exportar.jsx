@@ -1,6 +1,5 @@
 import { useState } from 'react';
-// Removendo a importação do Button customizado para usar CButton
-import { CButton, CCard, CCardBody, CCardHeader, CCol, CForm, CFormInput, CFormLabel, CFormSelect, CSpinner } from '@coreui/react';
+import { CButton,  CCardBody, CCol, CForm, CFormInput, CFormLabel, CFormSelect, CSpinner } from '@coreui/react';
 import { Container } from './Exportar.styles';
 import CardComponent from '../../../components/Card/Card';
 
@@ -19,7 +18,6 @@ const Exportar = () => {
   const handleExport = async (e) => {
     e.preventDefault();
     
-    // Validação básica para garantir que as datas foram preenchidas
     if (!startDate || !endDate) {
       setError('Por favor, preencha as datas de Início e Fim.');
       return;

@@ -34,10 +34,9 @@ const Detalhes = () => {
 
     const formatarData = (data) => {
         if (!data) return 'N/A';
-        // Lida com formatos de string 'dd/mm/yyyy' ou 'yyyy-mm-dd' (do backend)
         if (typeof data === 'string' && data.includes('/')) {
             const [day, month, year] = data.split('/');
-            // Usamos new Date() com o formato padronizado yyyy-mm-dd para evitar problemas de fuso horário
+         
             return new Date(`${year}-${month}-${day}`).toLocaleDateString('pt-BR');
         }
         return new Date(data).toLocaleDateString('pt-BR');
@@ -84,8 +83,7 @@ const Detalhes = () => {
                                 <p>
                                     <strong>Data de Expiração:</strong> {formatarData(donation.expiryDate)}
                                 </p>
-
-                                {/* Detalhes com o estilo de bloco de conteúdo */}
+                                
                                 {donation.details && (
                                     <>
                                         <p className="mt-3">
@@ -97,7 +95,6 @@ const Detalhes = () => {
                                     </>
                                 )}
 
-                                {/* Relatório */}
                                 {donation.report && (
                                     <div className="mt-3 w-100">
                                         <h3>Relatório da Doação:</h3>
@@ -109,7 +106,6 @@ const Detalhes = () => {
                                     </div>
                                 )}
 
-                                {/* Botões de Ação */}
                                 <div className="d-flex flex-wrap gap-3 mt-4 w-100 justify-content-center">
                                     <Link to={`/ajude-ja/doacoes/editar/${id}`}>
                                         <Button typeButton={'primary'}>
