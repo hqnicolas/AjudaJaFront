@@ -9,7 +9,7 @@ import {
   CButton
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilFile, cilGraph,  cilUser, cilMenu, cilBell } from '@coreui/icons'
+import { cilFile, cilGraph,  cilUser,  cilBell, cilCog } from '@coreui/icons'
 import { logo_ajude_ja_minimizada } from '../../assets/logo'
 
 
@@ -32,12 +32,12 @@ export default function Sidebar() {
           justifyContent: 'center',
         }}
       >
-        <CIcon icon={cilMenu} size="lg" />
+        <CIcon icon={cilCog} size="lg" />
       </CButton>
 
       <CSidebar
         overlaid
-        placement="start"
+        placement="end"
         visible={visible}
         onVisibleChange={setVisible}
         style={{ zIndex: 1050, 'marginTop': '4rem' }}

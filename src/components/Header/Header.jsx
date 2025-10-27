@@ -36,11 +36,10 @@ export default function Header() {
         </CNavbarBrand>
 
     
-        {!visible && (<Sidebar />)} 
 
         <CCollapse className="navbar-collapse" visible={visible}>
       
-          <CNavbarNav className="mx-auto flex-lg-row flex-column flex-grow-1 ">
+          <CNavbarNav className="mx-auto flex-lg-row flex-column flex-grow-1 justify-content-ari align-items-center">
           
             <CNavItem className="mx-3">
               <CNavLink as={Link} to="/ajude-ja/inicio" className="text-primary fw-semibold">
@@ -75,8 +74,9 @@ export default function Header() {
         </CCollapse>
 
 
+      {!visible && (<Sidebar />)} 
       </HeaderContainer>
     </CNavbar>
 
-  )
+)
 }
