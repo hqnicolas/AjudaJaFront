@@ -12,12 +12,6 @@ import Button from '../../../components/Button/Button';
 import { Container,ContainerMessageDetails } from './Detalhes.styles';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-
-
-
-
-
-
 const Detalhes = () => {
     const { id } = useParams();
     const [mensagem, setMensagem] = useState(null);

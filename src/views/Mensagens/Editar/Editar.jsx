@@ -1,40 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import {
-    CCard,
-    CCardHeader,
-    CCardBody,
-    CForm,
-    CFormLabel,
-    CFormInput,
-    CFormTextarea,
-    CButton,
-    CSpinner,
-    CAlert
-
-} from '@coreui/react';
+import {CCard, CCardHeader, CCardBody, CForm, CFormLabel, CFormInput, CFormTextarea, CButton, CSpinner, CAlert} from '@coreui/react';
 import { Container } from './Editar.styles'; 
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-
 const MensagemForm = ({ mensagem, onChange }) => {
     return (
-
         <>
-            <div>
-                <CFormLabel htmlFor="remetenteId">Remetente ID</CFormLabel>
-                <CFormInput
-                    type="number"
-                    id="remetenteId"
-                    name="remetenteId"
-                    value={mensagem.remetenteId || ''}
-                    onChange={onChange}
-                    required
-                />
-            </div>
-            
- 
             <div>
                 <CFormLabel htmlFor="dataEnvio">Data de Envio</CFormLabel>
                 <CFormInput
@@ -115,25 +88,6 @@ const Editar = () => {
             .finally(() => setLoading(false));
     };
 
-    const handleDelete = () => {
-        if (!window.confirm('Tem certeza que deseja excluir esta mensagem?')) return;
-        setLoading(true);
-        fetch(url, { method: 'DELETE' })
-            .then(res => {
-                if (res.status === 204) {
-                    setMessage('Mensagem excluída com sucesso!');
-                    setMensagem({});
-                    setTimeout(() => navigate("/ajude-ja/mensagens"), 2000);
-                } else if (res.status === 404) {
-                    setError('Mensagem não encontrada');
-                } else {
-                    throw new Error('Falha ao excluir mensagem');
-                }
-            })
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false));
-    };
-
     return (
     
         <Container>
@@ -169,9 +123,6 @@ const Editar = () => {
                                                 <i className="fa-solid fa-floppy-disk me-1" /> Salvar Alterações
                                             </>
                                         }
-                                    </CButton>
-                                    <CButton color="danger" onClick={handleDelete} disabled={loading}>
-                                        <i className="fa-solid fa-trash-can me-1" /> Excluir Mensagem
                                     </CButton>
                                 </div>
                                 
