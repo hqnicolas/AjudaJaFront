@@ -1,43 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../../components/Button/Button';
+import { Container, Title, Form, ButtonGroup, Message } from './Editar.styles';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-const DonationForm = ({ donation, onChange }) => {
-  return (
-    <form>
-      <label>
-        Nome da Doação:
-        <input type="text" name="name" value={donation.name || ''} onChange={onChange} />
-      </label>
-      <label>
-        Tipo:
-        <input type="text" name="type" value={donation.type || ''} onChange={onChange} />
-      </label>
-      <label>
-        Quantidade:
-        <input type="number" name="quantity" value={donation.quantity || ''} onChange={onChange} />
-      </label>
-      <label>
-        Donor (Doador):
-        <input type="text" name="donor" value={donation.donor || ''} onChange={onChange} />
-      </label>
-      <label>
-        Data de Expiração:
-        <input type="date" name="expiryDate" value={donation.expiryDate || ''} onChange={onChange} />
-      </label>
-      <label>
-        Período de Validade:
-        <input type="number" name="validityPeriod" value={donation.validityPeriod || ''} onChange={onChange} />
-      </label>
-      <label>
-        Data de Recebimento:
-        <input type="date" name="receiverDate" value={donation.receiverDate || ''} onChange={onChange} />
-      </label>
-    </form>
-  );
-};
+const DonationForm = ({ donation, onChange }) => (
+  <Form>
+    <label>
+      Nome da Doação:
+      <input type="text" name="name" value={donation.name || ''} onChange={onChange} />
+    </label>
+    <label>
+      Tipo:
+      <input type="text" name="type" value={donation.type || ''} onChange={onChange} />
+    </label>
+    <label>
+      Quantidade:
+      <input type="number" name="quantity" value={donation.quantity || ''} onChange={onChange} />
+    </label>
+    <label>
+      Doador:
+      <input type="text" name="donor" value={donation.donor || ''} onChange={onChange} />
+    </label>
+    <label>
+      Data de Expiração:
+      <input type="date" name="expiryDate" value={donation.expiryDate || ''} onChange={onChange} />
+    </label>
+    <label>
+      Período de Validade:
+      <input type="number" name="validityPeriod" value={donation.validityPeriod || ''} onChange={onChange} />
+    </label>
+    <label>
+      Data de Recebimento:
+      <input type="date" name="receiverDate" value={donation.receiverDate || ''} onChange={onChange} />
+    </label>
+  </Form>
+);
 
 const Editar = () => {
   const { id } = useParams();
@@ -50,14 +49,8 @@ const Editar = () => {
   useEffect(() => {
     setLoading(true);
     fetch(url)
-      .then(res => {
-        if (!res.ok) throw new Error('Falha ao buscar doação');
-        return res.json();
-      })
-      .then(data => {
-        setDonation(data);
-        setError(null);
-      })
+      .then(res => { if (!res.ok) throw new Error('Falha ao buscar doação'); return res.json(); })
+      .then(data => { setDonation(data); setError(null); })
       .catch(err => setError(err.message))
       .finally(() => setLoading(false));
   }, [url]);
@@ -75,15 +68,8 @@ const Editar = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(donation),
     })
-      .then(res => {
-        if (!res.ok) throw new Error('Falha ao atualizar doação');
-        return res.json();
-      })
-      .then(data => {
-        setDonation(data);
-        setMessage('Doação atualizada com sucesso!');
-        setError(null);
-      })
+      .then(res => { if (!res.ok) throw new Error('Falha ao atualizar doação'); return res.json(); })
+      .then(data => { setDonation(data); setMessage('Doação atualizada com sucesso!'); setError(null); })
       .catch(err => setError(err.message))
       .finally(() => setLoading(false));
   };
@@ -107,25 +93,21 @@ const Editar = () => {
   };
 
   return (
-    <div>
-      <h2>Editar Doação</h2>
+    <Container>
+      <Title>Editar Doação</Title>
       {loading && <p>Carregando...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {message && <p style={{ color: 'green' }}>{message}</p>}
+      {error && <Message type="error">{error}</Message>}
+      {message && <Message type="success">{message}</Message>}
       {!loading && donation && Object.keys(donation).length > 0 && (
         <>
           <DonationForm donation={donation} onChange={handleChange} />
-          <Button typeButton="primary" onClick={handleSubmit}>Salvar</Button>
-          <Button 
-            typeButton="danger" 
-            onClick={handleDelete} 
-            style={{ marginLeft: 10 }}
-          >
-            Excluir
-          </Button>
+          <ButtonGroup>
+            <Button typeButton="primary" onClick={handleSubmit}>Salvar</Button>
+            <Button typeButton="secondary" onClick={handleDelete}>Excluir</Button>
+          </ButtonGroup>
         </>
       )}
-    </div>
+    </Container>
   );
 };
 
