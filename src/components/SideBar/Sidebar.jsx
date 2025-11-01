@@ -1,68 +1,91 @@
 import { useState } from 'react'
 import {
-  CSidebar,
-  CSidebarBrand,
-  CSidebarHeader,
-  CSidebarNav,
-  CNavItem,
-  CNavTitle,
-  CButton
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { cilFile, cilGraph,  cilUser,  cilBell, cilCog } from '@coreui/icons'
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  IconButton,
+  Typography,
+} from '@mui/material'
+import {
+  Settings,
+  InsertChart,
+  People,
+  Notifications,
+  Description,
+} from '@mui/icons-material'
+import { ToggleButtonContainer } from './Sidebar.styles'
 import { logo_ajude_ja_minimizada } from '../../assets/logo'
-
+import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
-  const [visible, setVisible] = useState(false)
+  const [open, setOpen] = useState(true)
+  const toggleDrawer = () => setOpen(!open)
+  const closeSidebar = () => setOpen(false)
 
   return (
     <>
-      <CButton
-        onClick={() => setVisible(!visible)}
-        style={{
-          top: '',
-          left: '1rem',
-          zIndex: 1100,
-          borderRadius: '5px',
-          width: '3rem',
-          height: '3rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+      <ToggleButtonContainer>
+        <IconButton color="default" onClick={toggleDrawer}>
+          <Settings fontSize="large" />
+        </IconButton>
+      </ToggleButtonContainer>
+
+      <Drawer
+        anchor="left"
+        open={open}
+        onClose={toggleDrawer}
+        variant="persistent"
+        PaperProps={{
+          sx: { width: 240, borderRight: '1px solid #ddd', zIndex: 1050 },
         }}
       >
-        <CIcon icon={cilCog} size="lg" />
-      </CButton>
+        <div style={{ padding: '1rem', borderBottom: '1px solid #eee' }}>
+          <img src={logo_ajude_ja_minimizada} alt="Logo" width="30px" />
+        </div>
+        <List>
+          <Typography variant="subtitle2" sx={{ px: 2, py: 1, color: 'text.secondary' }}>
+            Administração
+          </Typography>
 
-      <CSidebar
-        overlaid
-        placement="end"
-        visible={visible}
-        onVisibleChange={setVisible}
-        style={{ zIndex: 1050, 'marginTop': '4rem' }}
-      >
-        <CSidebarHeader className="border-bottom">
-          <CSidebarBrand>
-            <img src={logo_ajude_ja_minimizada} alt="Logo" width={'30px'} />
-          </CSidebarBrand>
-        </CSidebarHeader>
-        <CSidebarNav>
-          <CNavTitle>Administração</CNavTitle>
-          <CNavItem href="/ajude-ja/doacoes">
-            <CIcon customClassName="nav-icon" icon={cilGraph} /> Doações
-          </CNavItem>
-          <CNavItem href="/ajude-ja/usuarios">
-            <CIcon customClassName="nav-icon" icon={cilUser} /> Usuários
-          </CNavItem>
-          <CNavItem href="/ajude-ja/mensagens">
-            <CIcon customClassName="nav-icon" icon={cilBell} /> Mensagens
-          </CNavItem>
-          <CNavItem href="/ajude-ja/relatorios/gerar">
-            <CIcon customClassName="nav-icon" icon={cilFile} /> Relatórios
-          </CNavItem>
-        </CSidebarNav>
-      </CSidebar>
+          <ListItemButton 
+            component={Link} 
+            to="/ajude-ja/doacoes"
+            onClick={closeSidebar}
+          >
+            <ListItemIcon><InsertChart /></ListItemIcon>
+            <ListItemText primary="Doações" />
+          </ListItemButton>
+
+          <ListItemButton 
+            component={Link} 
+            to="/ajude-ja/usuarios"
+            onClick={closeSidebar}
+          >
+            <ListItemIcon><People /></ListItemIcon>
+            <ListItemText primary="Usuários" />
+          </ListItemButton>
+
+          <ListItemButton 
+            component={Link} 
+            to="/ajude-ja/mensagens"
+            onClick={closeSidebar}
+          >
+            <ListItemIcon><Notifications /></ListItemIcon>
+            <ListItemText primary="Mensagens" />
+          </ListItemButton>
+
+          <ListItemButton 
+            component={Link} 
+            to="/ajude-ja/relatorios/gerar"
+            onClick={closeSidebar}
+          >
+            <ListItemIcon><Description /></ListItemIcon>
+            <ListItemText primary="Relatórios" />
+          </ListItemButton>
+        </List>
+      </Drawer>
     </>
   )
 }
