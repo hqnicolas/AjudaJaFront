@@ -20,7 +20,7 @@ import { logo_ajude_ja_minimizada } from '../../assets/logo'
 import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const toggleDrawer = () => setOpen(!open)
   const closeSidebar = () => setOpen(false)
 
