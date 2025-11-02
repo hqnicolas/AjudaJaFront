@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: #f8f9fa;
+
 
   .forms {
     width: 100%;
@@ -14,7 +14,7 @@ export const Container = styled.div`
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  
     display: flex;
     flex-direction: column;
     gap: 1rem;

@@ -28,12 +28,10 @@ import EditarDoacao from './views/Doacoes/Editar/Editar.jsx';
 import NovoUsuario from './views/Usuarios/Novo/Novo.jsx';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+    <StrictMode>
     <Router>
       <Routes>
-
         <Route path="/login" element={<Login />} />
-
 
         <Route path="/ajude-ja" element={<App />}>
           <Route index element={<Home />} />

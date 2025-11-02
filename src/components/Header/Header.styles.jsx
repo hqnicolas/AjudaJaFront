@@ -14,7 +14,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 1.5rem;
-
+font-size: 16px;
   .navbar {
   background-color: #fff !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);

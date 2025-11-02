@@ -13,6 +13,7 @@ import {
 import { logo_ajude_ja } from '../../assets/logo';
 import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
+import CardComponent from '../Card/Card';
 
 export default function FormsCoreUI() {
   const formRef = useRef();
@@ -49,12 +50,13 @@ export default function FormsCoreUI() {
       console.log('Dados de Login:', formData);
       // Chame sua rota de login aqui
     }
-    navigate('/');
+    navigate('/ajude-ja');
   };
 
   return (
     <Container>
-      <CForm className="forms  rounded shadow-sm" onSubmit={handleSubmit} ref={formRef}>
+      <CardComponent>
+      <CForm className="forms  rounded " onSubmit={handleSubmit} ref={formRef}>
         <div className="text-center ">
           <img src={logo_ajude_ja} alt="logo ajude já" style={{ maxWidth: '150px' }} />
         </div>
@@ -143,6 +145,7 @@ export default function FormsCoreUI() {
           </Button>
         </div>
       </CForm>
+      </CardComponent>
     </Container>
   );
 }

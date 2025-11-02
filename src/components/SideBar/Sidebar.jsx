@@ -26,12 +26,27 @@ export default function Sidebar() {
 
   return (
     <>
-      <ToggleButtonContainer>
-        <IconButton color="default" onClick={toggleDrawer}>
-          <Settings fontSize="large" />
+      <ToggleButtonContainer onClick={toggleDrawer} >
+        <IconButton
+          sx={{
+            color: 'var(--color-primary)',
+            border: '0 !important',
+            boxShadow: 'none !important',
+            background: 'none !important',
+            my: '-5px !important',
+            fontSize: '1.5rem',
+            transition: 'transform 0.1s ease, color 0.2s ease',
+            '&:hover': {
+              background: 'transparent !important',
+              color: 'var(--color-primary-hover)',
+              boxShadow: 'none !important',
+            },
+
+          }}
+        >
+          <i className="fa-solid fa-gear"></i>
         </IconButton>
       </ToggleButtonContainer>
-
       <Drawer
         anchor="left"
         open={open}
@@ -49,8 +64,8 @@ export default function Sidebar() {
             Administração
           </Typography>
 
-          <ListItemButton 
-            component={Link} 
+          <ListItemButton
+            component={Link}
             to="/ajude-ja/doacoes"
             onClick={closeSidebar}
           >
@@ -58,8 +73,8 @@ export default function Sidebar() {
             <ListItemText primary="Doações" />
           </ListItemButton>
 
-          <ListItemButton 
-            component={Link} 
+          <ListItemButton
+            component={Link}
             to="/ajude-ja/usuarios"
             onClick={closeSidebar}
           >
@@ -67,8 +82,8 @@ export default function Sidebar() {
             <ListItemText primary="Usuários" />
           </ListItemButton>
 
-          <ListItemButton 
-            component={Link} 
+          <ListItemButton
+            component={Link}
             to="/ajude-ja/mensagens"
             onClick={closeSidebar}
           >
@@ -76,8 +91,8 @@ export default function Sidebar() {
             <ListItemText primary="Mensagens" />
           </ListItemButton>
 
-          <ListItemButton 
-            component={Link} 
+          <ListItemButton
+            component={Link}
             to="/ajude-ja/relatorios/gerar"
             onClick={closeSidebar}
           >

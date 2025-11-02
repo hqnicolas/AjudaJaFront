@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom'
 import { logo_ajude_ja_minimizada } from '../../assets/logo/index.jsx'
 import { HeaderContainer } from './Header.styles.jsx'
 import Sidebar from '../SideBar/Sidebar.jsx'
+import Button from '../Button/Button.jsx'
 
 export default function Header() {
   const [visible, setVisible] = useState(false)
@@ -22,22 +23,22 @@ export default function Header() {
   return (
     <>
       <CNavbar expand="lg" colorScheme="light" className="bg-white shadow-sm fixed-top">
-        <HeaderContainer fluid className="px-4">
+        <HeaderContainer fluid className="px-4 d-flex justify-content-center align-items-center">
           <CNavbarToggler
             aria-label="Toggle navigation"
             onClick={() => setVisible(!visible)}
             className="me-2"
           />
-          <CNavbarBrand as={Link} to="/ajude-ja" className="d-flex align-items-center navbar-left">
+          <CNavbarBrand as={Link} to="/ajude-ja" className="d-flex align-items-center">
             <img
               src={logo_ajude_ja_minimizada}
               style={{ width: '2.5rem', height: 'auto', marginRight: '0.5rem' }}
             />
           </CNavbarBrand>
 
-          <CCollapse className="navbar-collapse" visible={visible}>
-            <CNavbarNav className="mx-auto flex-lg-row flex-column flex-grow-1 justify-content-ari align-items-center">
-              <CNavItem className="mx-3">
+          <CCollapse className="navbar-collapse justify-content-center" visible={visible}>
+            <CNavbarNav className="d-flex justify-content-center align-items-center gap-4">
+              <CNavItem>
                 <CNavLink
                   as={Link}
                   to="/ajude-ja"
@@ -48,7 +49,7 @@ export default function Header() {
                 </CNavLink>
               </CNavItem>
 
-              <CNavItem className="mx-3">
+              <CNavItem>
                 <CNavLink
                   as={Link}
                   to="/ajude-ja/campanhas"
@@ -58,8 +59,8 @@ export default function Header() {
                   Campanhas
                 </CNavLink>
               </CNavItem>
-              
-              <CNavItem className="mx-3">
+
+              <CNavItem>
                 <CNavLink
                   as={Link}
                   to="/ajude-ja/ongs"
@@ -69,8 +70,8 @@ export default function Header() {
                   Ong's
                 </CNavLink>
               </CNavItem>
-            
-              <CNavItem className="mx-3">
+
+              <CNavItem>
                 <CNavLink
                   as={Link}
                   to="/ajude-ja/noticias"
@@ -80,8 +81,8 @@ export default function Header() {
                   Notícias
                 </CNavLink>
               </CNavItem>
-           
-              <CNavItem className="mx-3">
+
+              <CNavItem>
                 <CNavLink
                   as={Link}
                   to="/ajude-ja/sobre"
@@ -90,6 +91,14 @@ export default function Header() {
                 >
                   Sobre nós
                 </CNavLink>
+              </CNavItem>
+
+              <CNavItem>
+                <Button typeButton={'primary'}>
+                  <Link to="/login" style={{ color: '#fff', textDecoration: 'none' }}>
+                    Entrar
+                  </Link>
+                </Button>
               </CNavItem>
             </CNavbarNav>
           </CCollapse>

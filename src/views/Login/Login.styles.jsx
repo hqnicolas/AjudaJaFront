@@ -11,6 +11,6 @@ export const Container = styled.div`
   gap: 2rem;
 
   h1{
-    color: var(--color-text);
+    color: var(--color-primary);
   }
 `
