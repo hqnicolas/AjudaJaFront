@@ -56,11 +56,9 @@ export default function Sidebar() {
           sx: { width: 240, borderRight: '1px solid #ddd', zIndex: 1050 },
         }}
       >
-        <div style={{ padding: '1rem', borderBottom: '1px solid #eee' }}>
-          <img src={logo_ajude_ja_minimizada} alt="Logo" width="30px" />
-        </div>
+       
         <List>
-          <Typography variant="subtitle2" sx={{ px: 2, py: 1, color: 'text.secondary' }}>
+          <Typography variant="subtitle2" sx={{ px: 2, py:5, color: 'text.secondary' }}>
             Administração
           </Typography>
 

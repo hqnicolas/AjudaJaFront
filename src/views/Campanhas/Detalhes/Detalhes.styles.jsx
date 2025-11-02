@@ -6,6 +6,7 @@ export const Container = styled.div`
   width: 85%;
   margin: 0 auto;
   flex: 1;
+    padding-top: 1.5rem;
 `
 
 export const NewDonationContainer = styled.div`
