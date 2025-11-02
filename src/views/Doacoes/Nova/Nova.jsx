@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     CForm,
     CFormInput,
@@ -10,12 +11,14 @@ import {
     CFormSelect,
 } from '@coreui/react';
 
-import { Container } from './Nova.styles'; 
+import { Container } from './Nova.styles';
 import Button from '../../../components/Button/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export default function Novo() {
+export default function Nova() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: '',
         type: '',
@@ -27,6 +30,7 @@ export default function Novo() {
 
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,6 +41,7 @@ export default function Novo() {
         e.preventDefault();
         setLoading(true);
         setMessage('');
+        setIsSuccess(false);
 
         try {
             const response = await fetch(`${API_BASE_URL}donation`, {
@@ -48,6 +53,7 @@ export default function Novo() {
             const data = await response.json();
 
             if (response.ok) {
+                setIsSuccess(true);
                 setMessage(data.mensagem || 'Doação criada com sucesso!');
                 setFormData({
                     name: '',
@@ -57,9 +63,10 @@ export default function Novo() {
                     receiverDate: '',
                     validityPeriod: '',
                 });
+                navigate('/ajude-ja/doacoes');
             } else {
                 console.error('Erro no servidor:', data);
-                setMessage(data.mensagem || 'Erro ao criar doação');
+                setMessage(data.mensagem || 'Erro ao criar doação.');
             }
         } catch (error) {
             console.error('Erro na comunicação:', error);
@@ -93,6 +100,7 @@ export default function Novo() {
                                 />
                             </CInputGroup>
                         </CCol>
+
                         <CCol md={6}>
                             <CFormLabel htmlFor="type">Tipo</CFormLabel>
                             <CFormSelect
@@ -173,8 +181,8 @@ export default function Novo() {
                                 />
                             </CInputGroup>
                         </CCol>
-
-                    </CRow>
+                        
+                     </CRow>
 
                     <div className="btn-submit mt-4">
                         <Button typeButton="primary" type="submit" disabled={loading}>

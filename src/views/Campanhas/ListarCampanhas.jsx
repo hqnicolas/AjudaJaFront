@@ -11,9 +11,24 @@ import Button from '../../components/Button/Button';
 
 
 const mockCampanhas = [
-  { id: 1, titulo: 'Ajuda às Vítimas da Chuva', imagem: 'https://pbs.twimg.com/media/G3bJwK1WIAA2Mq1?format=jpg&name=900x900', descricao: 'akakaakakakakak' },
-  { id: 2, titulo: 'Mochilas para Crianças', imagem: 'https://pbs.twimg.com/media/G3cBIAdW8AAUwMg?format=jpg&name=small', descricao: 'akakaakakakakak' },
-  { id: 3, titulo: 'Refeições Comunitárias', imagem: 'https://pbs.twimg.com/media/G3ZRzwbWIAQ6i3c?format=jpg&name=small', descricao: 'akakaakakakakak' },
+  { 
+    id: 1, 
+    titulo: 'Ajuda às Vítimas da Chuva', 
+    imagem: 'https://assets.brasildefato.com.br/2024/09/image_processing20210520-1578-1kburbm-750x449.jpeg', 
+    descricao: 'Participe dessa campanha para levar roupas, às famílias afetadas pelas fortes chuvas.' 
+  },
+  { 
+    id: 2, 
+    titulo: 'Mochilas para Crianças', 
+    imagem: 'https://paverama.rs.gov.br/uploads/noticia/20489/maior_Entrega_dos_uniformes_III.jpg', 
+    descricao: 'Doe mochilas e materiais escolares para crianças em situação de vulnerabilidade e ajude.' 
+  },
+  { 
+    id: 3, 
+    titulo: 'Refeições Comunitárias', 
+    imagem: 'https://www.ba.gov.br/comunicacao/sites/site-comunicacao/files/migracao_2024/arquivos/wp-content/uploads/2024/07/Fotos-Thuane-MariaGOVBA-2-1.jpg', 
+    descricao: 'Contribua para oferecer refeições nutritivas a pessoas em situação de rua.' 
+  },
 ];
 
 export default function ListarCampanhas() {
