@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Button from '../../components/Button/Button';
+import Button from '../../../components/Button/Button';
 import { Container, Title, Form, ButtonGroup, Message } from './Editar.styles';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;

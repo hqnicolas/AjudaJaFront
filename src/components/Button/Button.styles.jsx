@@ -10,6 +10,7 @@ export const ButtonContainer = styled.button`
   font-size: 0.8rem;
   cursor: pointer;
     font-weight: 600;
+    text-align: center;
   background-color: ${(props) =>
     props.typeButton == 'primary'
       ? 'var(--color-primary)'

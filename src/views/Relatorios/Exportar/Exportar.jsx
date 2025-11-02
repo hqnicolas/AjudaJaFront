@@ -71,7 +71,7 @@ return (
 
     <Container className="d-flex flex-column  p-3">
         
-        <h1 className="m-0 mb-4">Exportar Relatório de Doações</h1>
+        <h3 className="m-0 mb-4">Exportar Relatório de Doações</h3>
         
         <CardComponent className="shadow-sm w-75 w-md-50 mx-auto"> 
             <CCardBody> 

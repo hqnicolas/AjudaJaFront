@@ -6,10 +6,10 @@ import { Container } from "./Home.styles";
 
 export default function Home() {
   return (
-    <Container>
-      <CRow className="content-container justify-content-center align-items-center text-center text-md-start flex-column-reverse flex-md-row">
-        {/* Coluna do Texto: md={5} cria espaço */}
-        <CCol xs={12} md={5} lg={5}>
+    <Container className="d-flex - justify-content-center">
+      <CRow className="content-container w-100 align-items-center ">
+  
+        <CCol xs={12} md={6} className="text-center text-md-start">
           <h1>
             Transforme Vidas <br />
             com <span>Generosidade</span>
@@ -18,15 +18,16 @@ export default function Home() {
             Transforme boas intenções em ação real. Com o AjudeJá, cada doação é
             direcionada, rastreada e faz a diferença onde mais importa.
           </p>
+
           <Link to="/ajude-ja/campanhas">
             <Button typeButton="secondary" className="button">
-              Iniciar uma Campanha
+              Salvar uma vida
             </Button>
           </Link>
         </CCol>
 
-       
-        <CCol xs={12} md={5} lg={5} >
+        
+        <CCol xs={12} md={6} className="d-flex justify-content-center">
           <img src={logo_ajude_ja} alt="Logo Ajude Já" className="img-fluid" />
         </CCol>
       </CRow>

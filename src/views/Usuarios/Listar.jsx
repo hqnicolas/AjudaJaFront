@@ -14,6 +14,7 @@ import {
   CCardHeader
 } from '@coreui/react';
 import Button from "../../components/Button/Button";
+import { Container } from "./Listar.styles";
 
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -55,14 +56,14 @@ const ListarUsuarios = () => {
     return <p style={{ color: "red", textAlign: "center" }}>{error}</p>;
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <CCard className="shadow-sm">
-        <CCardHeader className="d-flex justify-content-between align-items-center">
+   <Container>
+   
+      <div className="d-flex justify-content-between align-items-center mb-3">
           <h3 className="m-0" style={{ color: "var(--color-primary)" }}>Lista de Usuários</h3>
           <Link to="/ajude-ja/usuarios/novo">
             <Button typeButton="primary">+ Criar Novo Usuário</Button>
           </Link>
-        </CCardHeader>
+      </div>
 
         <CCardBody>
           {usuarios.length === 0 ? (
@@ -99,22 +100,24 @@ const ListarUsuarios = () => {
                     <CTableDataCell>{user.location}</CTableDataCell>
                     <CTableDataCell>{user.interests}</CTableDataCell>
                     <CTableDataCell>
-                <CTableDataCell className="d-flex">
-                      <div className="d-flex justify-content-center gap-3 w-100">
-                        <CButton
-                          className="text-white bg-info w-75"
-                          onClick={() => handleEdit(user.id)}
-                        >
-                      <i className="fa-solid fa-pen-to-square me-1"/>    Editar
-                        </CButton>
-                        <CButton
-                          className="text-white bg-primary w-75"
-                          onClick={() => handleViewDetails(user.id)}
-                        >
-                           <i className="fa-solid fa-eye me-1" /> Detalhes
-                        </CButton>
-                      </div>
-                    </CTableDataCell>
+                      <CTableDataCell className="d-flex">
+                        <div className="d-flex justify-content-center gap-3 w-100">
+                          <CButton
+                            className="text-dark w-75" variant="ghost"
+                            onClick={() => handleEdit(user.id)}
+                          color="info"
+                          >
+                            <i className="fa-solid fa-pen-to-square me-1" />    Editar
+                          </CButton>
+                          <CButton
+                          color="primary"
+                            className="text-dark w-75"
+                            onClick={() => handleViewDetails(user.id)}
+                            variant="ghost" >
+                            <i className="fa-solid fa-eye me-1" /> Detalhes
+                          </CButton>
+                        </div>
+                      </CTableDataCell>
                     </CTableDataCell>
                   </CTableRow>
                 ))}
@@ -122,8 +125,8 @@ const ListarUsuarios = () => {
             </CTable>
           )}
         </CCardBody>
-      </CCard>
-    </div>
+      
+    </Container>
   );
 };
 

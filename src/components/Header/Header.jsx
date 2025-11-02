@@ -28,7 +28,7 @@ export default function Header() {
             onClick={() => setVisible(!visible)}
             className="me-2"
           />
-          <CNavbarBrand as={Link} to="/ajude-ja/inicio" className="d-flex align-items-center navbar-left">
+          <CNavbarBrand as={Link} to="/ajude-ja" className="d-flex align-items-center navbar-left">
             <img
               src={logo_ajude_ja_minimizada}
               style={{ width: '2.5rem', height: 'auto', marginRight: '0.5rem' }}
@@ -40,7 +40,7 @@ export default function Header() {
               <CNavItem className="mx-3">
                 <CNavLink
                   as={Link}
-                  to="/ajude-ja/inicio"
+                  to="/ajude-ja"
                   className="text-primary fw-semibold"
                   onClick={handleNavLinkClick}
                 >

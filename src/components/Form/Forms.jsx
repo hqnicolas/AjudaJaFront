@@ -49,7 +49,7 @@ export default function FormsCoreUI() {
       console.log('Dados de Login:', formData);
       // Chame sua rota de login aqui
     }
-    navigate('/ajude-ja/inicio');
+    navigate('/');
   };
 
   return (

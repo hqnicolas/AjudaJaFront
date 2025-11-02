@@ -11,9 +11,9 @@
   padding-top: 1.5rem;
   gap: 1.5rem;
 
- h1{
+ h3{
     color: var(--color-primary);
     flex: 1 1 60%;
-    padding-left: 2.6rem;
+    padding-left: 3rem;
   }
 `

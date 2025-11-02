@@ -24,7 +24,7 @@ import Home from './views/Home/Home.jsx';
 import ListarDoacoes from './views/Doacoes/Listar.jsx';
 import NovoDoacao from './views/Doacoes//Nova/Nova.jsx';
 import DetalhesDoacao from './views/Doacoes/Detalhes/Detalhes.jsx';
-import EditarDoacao from './views/Doacoes/Editar';
+import EditarDoacao from './views/Doacoes/Editar/Editar.jsx';
 import NovoUsuario from './views/Usuarios/Novo/Novo.jsx';
 
 createRoot(document.getElementById('root')).render(
@@ -32,22 +32,20 @@ createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
 
-        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
+
         <Route path="/ajude-ja" element={<App />}>
-
-          <Route path="inicio" element={<Home />} />
-
+          <Route index element={<Home />} />
 
           <Route path="campanhas" element={<ListarCampanhas />} />
           <Route path="campanhas/doar/:id" element={<NovaDoacao />} />
           <Route path="campanhas/editar/:id" element={<EditarCampanhas />} />
           <Route path="campanhas/detalhes/:id" element={<DetalhesCampanha />} />
 
-
           <Route path="relatorios/gerar" element={<GerarRelatorio />} />
           <Route path="relatorios/exportar" element={<ExportarRelatorio />} />
+
 
           <Route path="mensagens" element={<ListarMensagens />} />
           <Route path="mensagens/nova" element={<NovaMensagem />} />
@@ -65,10 +63,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="doacoes/novo" element={<NovoDoacao />} />
           <Route path="doacoes/editar/:id" element={<EditarDoacao />} />
           <Route path="doacoes/detalhes/:id" element={<DetalhesDoacao />} />
-
         </Route>
-      </Routes>
 
+
+      </Routes>
     </Router>
   </StrictMode>
 );

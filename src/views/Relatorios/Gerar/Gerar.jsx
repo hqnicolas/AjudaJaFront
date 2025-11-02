@@ -59,7 +59,7 @@ const Gerar = () => {
   return (
     <Container>
 
-      <h1>Gerar Relatório de Doações</h1>
+    <h3 className="m-0" style={{ color: "var(--color-primary)" }}>Gerar Relatório de Doações</h3>
       <CardComponent className="shadow-sm flex-column w-80">
 
         <CCardBody>

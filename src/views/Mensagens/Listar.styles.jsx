@@ -1,5 +1,14 @@
 import styled from "styled-components";
-import { CCard } from "@coreui/react";
+
+export const Container = styled.div`
+align-items: center;
+justify-content: center;
+flex-direction: column;
+margin: 2rem auto;
+padding: 2rem;
+width: 100vw;
+`;
+
 
 export const ListaContainer = styled.div`
   display: flex;
