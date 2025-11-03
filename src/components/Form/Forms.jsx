@@ -8,16 +8,16 @@ import {
   CInputGroupText,
   CRow,
   CCol,
+  CButton,
 } from '@coreui/react';
 import { logo_ajude_ja } from '../../assets/logo';
-import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
+import CardComponent from '../Card/Card';
 
 export default function FormsCoreUI() {
   const formRef = useRef();
   const navigate = useNavigate();
-  const { login, register } = useUser();
 
   const [showPass, setShowPass] = useState(false);
   const [typeForm, setTypeForm] = useState('register');
@@ -34,29 +34,30 @@ export default function FormsCoreUI() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (typeForm === 'register') {
-      register
-        ? register(formData)
-        : login({ name: formData.name, email: formData.email });
-      console.log('Usuário cadastrado:', formData);
+      console.log('Dados de Cadastro:', formData);
+      // Chame sua rota de cadastro aqui
     } else {
-      login({ name: formData.name || 'User', email: formData.email });
-      console.log('Usuário logado:', formData);
+      console.log('Dados de Login:', formData);
+      // Chame sua rota de login aqui
     }
-
     navigate('/ajude-ja');
   };
 
   return (
     <Container>
-      <CForm className="forms rounded shadow-sm" onSubmit={handleSubmit} ref={formRef}>
-        <div className="text-center">
+      <CardComponent>
+      <CForm className="forms  rounded " onSubmit={handleSubmit} ref={formRef}>
+        <div className="text-center ">
           <img src={logo_ajude_ja} alt="logo ajude já" style={{ maxWidth: '150px' }} />
         </div>
 
@@ -131,11 +132,7 @@ export default function FormsCoreUI() {
         <div className="text-center mt-3 mb-3">
           <span className="change-form">
             {typeForm === 'register' ? 'Já possui uma conta? ' : 'Ainda não possui uma conta? '}
-            <span
-              className="change-form-child"
-              style={{ cursor: 'pointer', fontWeight: 'bold' }}
-              onClick={changeForm}
-            >
+            <span className="change-form-child" style={{ cursor: 'pointer', fontWeight: 'bold' }} onClick={changeForm}>
               {typeForm === 'register' ? 'Entre' : 'Cadastre-se'}
             </span>
             .
@@ -143,11 +140,12 @@ export default function FormsCoreUI() {
         </div>
 
         <div className="btn-submit">
-          <Button typeButton="primary" type="submit">
+          <Button typeButton="primary" type="submit" className="">
             {typeForm === 'register' ? 'Cadastrar' : 'Entrar'}
           </Button>
         </div>
       </CForm>
+      </CardComponent>
     </Container>
   );
 }
