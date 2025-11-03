@@ -50,7 +50,7 @@
       <Container>
       <div className="d-flex justify-content-between align-items-center mb-3">
             <h3 className="m-0" style={{ color: "var(--color-primary)" }}>Lista de Doações</h3>
-            <Link to="/ajude-ja/doacoes/novo">
+            <Link to="/doacoes/novo">
               <Button typeButton="primary" className="d-flex align-items-center justify-content-center">
                 <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Doação
               </Button>
@@ -82,12 +82,12 @@
                       <CTableDataCell>{formatDate(doacao.receiverDate)}</CTableDataCell>
                       <CTableDataCell>{formatDate(doacao.expiryDate)}</CTableDataCell>
                       <CTableDataCell className="d-flex justify-content-center gap-2">
-                        <Link to={`/ajude-ja/doacoes/editar/${doacao.id}`}>
+                        <Link to={`/doacoes/editar/${doacao.id}`}>
                           <CButton color="info" className="text-dark" variant = "ghost">
                             <i className="fa-solid fa-pen-to-square me-1"/> Editar
                           </CButton>
                         </Link>
-                        <Link to={`/ajude-ja/doacoes/detalhes/${doacao.id}`}>
+                        <Link to={`/doacoes/detalhes/${doacao.id}`}>
                           <CButton color="primary" variant = "ghost"  className="text-dark">
                             <i className="fa-solid fa-eye me-1" /> Detalhes
                           </CButton>

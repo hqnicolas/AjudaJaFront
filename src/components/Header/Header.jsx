@@ -22,7 +22,7 @@ export default function Header() {
       <CNavbar colorScheme="light" className="bg-white shadow-sm fixed-top">
         <HeaderContainer className="px-4 d-flex justify-content-between align-items-center">
        
-          <CNavbarBrand as={Link} to="/ajude-ja" className="d-flex align-items-center">
+          <CNavbarBrand as={Link} to="/" className="d-flex align-items-center">
             <img
               src={logo_ajude_ja_minimizada}
               style={{ width: '2.5rem', height: 'auto', marginRight: '0.5rem' }}
@@ -32,7 +32,7 @@ export default function Header() {
             <CNavItem>
               <CNavLink
                 as={Link}
-                to="/ajude-ja"
+                to="/"
                 className="text-primary fw-semibold"
                 onClick={handleNavLinkClick}
               >
@@ -43,7 +43,7 @@ export default function Header() {
             <CNavItem>
               <CNavLink
                 as={Link}
-                to="/ajude-ja/campanhas"
+                to="/campanhas"
                 className="text-primary fw-semibold"
                 onClick={handleNavLinkClick}
               >
@@ -54,7 +54,7 @@ export default function Header() {
             <CNavItem>
               <CNavLink
                 as={Link}
-                to="/ajude-ja/ongs"
+                to="/ongs"
                 className="text-primary fw-semibold"
                 onClick={handleNavLinkClick}
               >
@@ -65,7 +65,7 @@ export default function Header() {
             <CNavItem>
               <CNavLink
                 as={Link}
-                to="/ajude-ja/noticias"
+                to="/noticias"
                 className="text-primary fw-semibold"
                 onClick={handleNavLinkClick}
               >
@@ -76,7 +76,7 @@ export default function Header() {
             <CNavItem>
               <CNavLink
                 as={Link}
-                to="/ajude-ja/sobre"
+                to="/sobre"
                 className="text-primary fw-semibold"
                 onClick={handleNavLinkClick}
               >

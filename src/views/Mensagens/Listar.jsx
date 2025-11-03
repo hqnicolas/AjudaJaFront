@@ -54,7 +54,7 @@ const Listar = () => {
           <h3 className="m-0" style={{ color: "var(--color-primary)" }}>
             Lista de Mensagens
           </h3>
-          <Link to="/ajude-ja/mensagens/nova">
+          <Link to="/mensagens/nova">
             <Button typeButton="primary">
               <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Mensagem
             </Button>
@@ -80,12 +80,12 @@ const Listar = () => {
                   </div>
 
                   <div className="acoes">
-                    <Link to={`/ajude-ja/mensagens/editar/${index + 1}`}>
+                    <Link to={`/mensagens/editar/${index + 1}`}>
                       <CButton color="info" className="text-dark" variant="ghost">
                         <i className="fa-solid fa-pen-to-square me-1" /> Editar
                       </CButton>
                     </Link>
-                    <Link to={`/ajude-ja/mensagens/detalhes/${index + 1}`}>
+                    <Link to={`/mensagens/detalhes/${index + 1}`}>
                       <CButton color="primary" className="text-dark" variant="ghost">
                         <i className="fa-solid fa-eye me-1" /> Detalhes
                       </CButton>

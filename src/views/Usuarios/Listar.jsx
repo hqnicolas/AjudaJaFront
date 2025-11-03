@@ -41,8 +41,8 @@ const ListarUsuarios = () => {
       });
   }, []);
 
-  const handleViewDetails = (id) => navigate(`/ajude-ja/usuarios/detalhes/${id}`);
-  const handleEdit = (id) => navigate(`/ajude-ja/usuarios/editar/${id}`);
+  const handleViewDetails = (id) => navigate(`/usuarios/detalhes/${id}`);
+  const handleEdit = (id) => navigate(`/usuarios/editar/${id}`);
 
   if (loading)
     return (
@@ -60,7 +60,7 @@ const ListarUsuarios = () => {
    
       <div className="d-flex justify-content-between align-items-center mb-3">
           <h3 className="m-0" style={{ color: "var(--color-primary)" }}>Lista de Usuários</h3>
-          <Link to="/ajude-ja/usuarios/novo">
+          <Link to="/usuarios/novo">
             <Button typeButton="primary">+ Criar Novo Usuário</Button>
           </Link>
       </div>

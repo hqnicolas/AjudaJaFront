@@ -128,7 +128,7 @@ const Editar = () => {
                                 
                                
                                 <div className="d-flex gap-3">
-                                    <Link to={`/ajude-ja/mensagens/detalhes/${id}`} className="btn btn-secondary">
+                                    <Link to={`/mensagens/detalhes/${id}`} className="btn btn-secondary">
                                         <i className="fa-solid fa-eye me-1" /> Ver Detalhes
                                     </Link>
                                 </div>

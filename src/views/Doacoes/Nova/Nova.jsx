@@ -63,7 +63,7 @@ export default function Nova() {
                     receiverDate: '',
                     validityPeriod: '',
                 });
-                navigate('/ajude-ja/doacoes');
+                navigate('/doacoes');
             } else {
                 console.error('Erro no servidor:', data);
                 setMessage(data.mensagem || 'Erro ao criar doação.');

@@ -81,7 +81,7 @@ export default function ListarCampanhas() {
                 <Card.Body>
                   <Card.Title>{campanha.titulo}</Card.Title>
                   <Card.Text>{campanha.descricao}</Card.Text>
-                  <Link to={`/ajude-ja/campanhas/detalhes/${campanha.id}`} className="link-donation">
+                  <Link to={`/campanhas/detalhes/${campanha.id}`} className="link-donation">
                     <Button typeButton="secondary" >Ver mais</Button>
                   </Link>
                 </Card.Body>

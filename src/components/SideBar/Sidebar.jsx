@@ -76,7 +76,7 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
 
           <ListItemButton
             component={Link}
-            to="/ajude-ja/doacoes"
+            to="/doacoes"
             onClick={closeSidebar}
           >
             <ListItemIcon><InsertChart /></ListItemIcon>
@@ -85,7 +85,7 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
 
           <ListItemButton
             component={Link}
-            to="/ajude-ja/usuarios"
+            to="/usuarios"
             onClick={closeSidebar}
           >
             <ListItemIcon><People /></ListItemIcon>
@@ -95,7 +95,7 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
 
           <ListItemButton
             component={Link}
-            to="/ajude-ja/mensagens"
+            to="/mensagens"
             onClick={closeSidebar}
           >
             <ListItemIcon><Notifications /></ListItemIcon>
@@ -104,7 +104,7 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
 
           <ListItemButton
             component={Link}
-            to="/ajude-ja/relatorios/gerar"
+            to="/relatorios/gerar"
             onClick={closeSidebar}
           >
             <ListItemIcon><Description /></ListItemIcon>

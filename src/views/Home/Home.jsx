@@ -19,7 +19,7 @@ export default function Home() {
             direcionada, rastreada e faz a diferença onde mais importa.
           </p>
 
-          <Link to="/ajude-ja/campanhas">
+          <Link to="/campanhas">
             <Button typeButton="secondary" className="button">
               Salvar uma vida
             </Button>

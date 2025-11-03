@@ -33,7 +33,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/login" element={<Login />} />
 
-        <Route path="/ajude-ja" element={<App />}>
+        <Route path="/" element={<App />}>
           <Route index element={<Home />} />
 
           <Route path="campanhas" element={<ListarCampanhas />} />

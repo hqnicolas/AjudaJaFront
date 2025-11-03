@@ -71,12 +71,12 @@ const Detalhes = () => {
                                 </p>
 
                                 <div className="d-flex flex-wrap gap-3 mt-4 w-100 justify-content-center">
-                                    <Link to={`/ajude-ja/mensagens/editar/${id}`}>
+                                    <Link to={`/mensagens/editar/${id}`}>
                                         <Button typeButton={'primary'}>
                                             <i className="fa-solid fa-pen-to-square me-1" /> Editar Mensagem
                                         </Button>
                                     </Link>
-                                    <Link to="/ajude-ja/mensagens/nova">
+                                    <Link to="/mensagens/nova">
                                         <Button typeButton={'secondary'}>
                                             <i className="fa-solid fa-plus me-1" /> Criar Nova Mensagem
                                         </Button>

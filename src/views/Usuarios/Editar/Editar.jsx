@@ -68,7 +68,7 @@ export default function EditarUsuario() {
             .then(() => {
                 setMessage('Usuário atualizado com sucesso!');
                 setError(null);
-                setTimeout(() => navigate('/ajude-ja/usuarios'), 2000);
+                setTimeout(() => navigate('/usuarios'), 2000);
             })
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
@@ -81,7 +81,7 @@ export default function EditarUsuario() {
             .then(res => {
                 if (res.status === 204) {
                     setMessage('Usuário excluído com sucesso!');
-                    setTimeout(() => navigate('/ajude-ja/usuarios'), 2000);
+                    setTimeout(() => navigate('/usuarios'), 2000);
                 } else if (res.status === 404) {
                     setError('Usuário não encontrado');
                 } else {

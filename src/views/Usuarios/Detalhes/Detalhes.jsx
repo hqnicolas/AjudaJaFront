@@ -19,7 +19,7 @@ export default function DetalhesUsuario() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const handleEdit = (id) => navigate(`/ajude-ja/usuarios/editar/${id}`);
+  const handleEdit = (id) => navigate(`/usuarios/editar/${id}`);
   useEffect(() => {
     if (!id) return;
 

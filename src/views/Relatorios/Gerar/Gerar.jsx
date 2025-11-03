@@ -17,7 +17,7 @@ const RelatorioItem = ({ relatorio }) => (
     <p><strong>Data de Recebimento:</strong> {new Date(relatorio.receiverDate).toLocaleDateString("pt-BR")}</p>
     <p><strong>Data de Validade:</strong> {new Date(relatorio.expiryDate).toLocaleDateString("pt-BR")}</p>
     <p><strong>Período de Validade:</strong> {relatorio.validityPeriod} meses</p>
-    <Link to={`/ajude-ja/campanhas/detalhes/${relatorio.id}`}>
+    <Link to={`/campanhas/detalhes/${relatorio.id}`}>
       <Button typeButton="secondary">Ver Detalhes</Button>
     </Link>
   </div>
@@ -154,7 +154,7 @@ const Gerar = () => {
           </div>
 
           <div className="mt-4 pt-3 border-top text-end">
-            <Link to="/ajude-ja/relatorios/exportar">
+            <Link to="/relatorios/exportar">
 
               <CButton color="secondary">Exportar Relatório</CButton>
             </Link>
