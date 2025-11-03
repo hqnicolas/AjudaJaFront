@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
 import '@coreui/coreui/dist/css/coreui.min.css';
+import { UserProvider } from './context/UserContext.jsx';
 
 import ListarCampanhas from './views/Campanhas/ListarCampanhas.jsx';
 import NovaDoacao from './views/Campanhas/Nova/Nova.jsx';
@@ -29,42 +30,42 @@ import NovoUsuario from './views/Usuarios/Novo/Novo.jsx';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
+      <UserProvider>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
 
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
+            <Route path="/" element={<App />}>
+              <Route index element={<Home />} />
 
-          <Route path="campanhas" element={<ListarCampanhas />} />
-          <Route path="campanhas/doar/:id" element={<NovaDoacao />} />
-          <Route path="campanhas/editar/:id" element={<EditarCampanhas />} />
-          <Route path="campanhas/detalhes/:id" element={<DetalhesCampanha />} />
+              <Route path="campanhas" element={<ListarCampanhas />} />
+              <Route path="campanhas/doar/:id" element={<NovaDoacao />} />
+              <Route path="campanhas/editar/:id" element={<EditarCampanhas />} />
+              <Route path="campanhas/detalhes/:id" element={<DetalhesCampanha />} />
 
-          <Route path="relatorios/gerar" element={<GerarRelatorio />} />
-          <Route path="relatorios/exportar" element={<ExportarRelatorio />} />
-
-
-          <Route path="mensagens" element={<ListarMensagens />} />
-          <Route path="mensagens/nova" element={<NovaMensagem />} />
-          <Route path="mensagens/editar/:id" element={<EditarMensagem />} />
-          <Route path="mensagens/detalhes/:id" element={<DetalhesMensagem />} />
+              <Route path="relatorios/gerar" element={<GerarRelatorio />} />
+              <Route path="relatorios/exportar" element={<ExportarRelatorio />} />
 
 
-          <Route path="usuarios" element={<ListarUsuarios />} />
-          <Route path="usuarios/novo" element={<NovoUsuario />} />
-          <Route path="usuarios/editar/:id" element={<EditarUsuario />} />
-          <Route path="usuarios/detalhes/:id" element={<DetalhesUsuario />} />
+              <Route path="mensagens" element={<ListarMensagens />} />
+              <Route path="mensagens/nova" element={<NovaMensagem />} />
+              <Route path="mensagens/editar/:id" element={<EditarMensagem />} />
+              <Route path="mensagens/detalhes/:id" element={<DetalhesMensagem />} />
 
 
-          <Route path="doacoes" element={<ListarDoacoes />} />
-          <Route path="doacoes/novo" element={<NovoDoacao />} />
-          <Route path="doacoes/editar/:id" element={<EditarDoacao />} />
-          <Route path="doacoes/detalhes/:id" element={<DetalhesDoacao />} />
-        </Route>
+              <Route path="usuarios" element={<ListarUsuarios />} />
+              <Route path="usuarios/novo" element={<NovoUsuario />} />
+              <Route path="usuarios/editar/:id" element={<EditarUsuario />} />
+              <Route path="usuarios/detalhes/:id" element={<DetalhesUsuario />} />
 
 
-      </Routes>
-    </Router>
-  </StrictMode>
+              <Route path="doacoes" element={<ListarDoacoes />} />
+              <Route path="doacoes/novo" element={<NovoDoacao />} />
+              <Route path="doacoes/editar/:id" element={<EditarDoacao />} />
+              <Route path="doacoes/detalhes/:id" element={<DetalhesDoacao />} />
+            </Route>
+          </Routes>
+        </Router>
+      </UserProvider>
+    </StrictMode>
 );
