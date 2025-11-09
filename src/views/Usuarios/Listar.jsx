@@ -14,7 +14,7 @@ import {
   CCardHeader
 } from '@coreui/react';
 import Button from "../../components/Button/Button";
-import { Container } from "./Listar.styles";
+import { Container, ListHeaderContainer } from "./Listar.styles";
 
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -56,76 +56,80 @@ const ListarUsuarios = () => {
     return <p style={{ color: "red", textAlign: "center" }}>{error}</p>;
 
   return (
-   <Container>
-   
-      <div className="d-flex justify-content-between align-items-center mb-3">
-          <h3 className="m-0" style={{ color: "var(--color-primary)" }}>Lista de Usuários</h3>
-          <Link to="/usuarios/novo">
-            <Button typeButton="primary">+ Criar Novo Usuário</Button>
-          </Link>
-      </div>
+    <Container>
 
-        <CCardBody>
-          {usuarios.length === 0 ? (
-            <p className="text-center">Nenhum usuário encontrado.</p>
-          ) : (
-            <CTable striped responsive bordered hover>
-              <CTableHead color="light">
-                <CTableRow>
-                  <CTableHeaderCell scope="col">Foto</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nome</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Email</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Localização</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Interesses</CTableHeaderCell>
-                  <CTableHeaderCell scope="col" className="text-center">Ações</CTableHeaderCell>
-                </CTableRow>
-              </CTableHead>
-              <CTableBody>
-                {usuarios.map((user) => (
-                  <CTableRow key={user.id}>
-                    <CTableDataCell>
-                      <img
-                        src={user.photos}
-                        alt={user.name}
-                        style={{
-                          width: 50,
-                          height: 50,
-                          borderRadius: "50%",
-                          objectFit: "cover"
-                        }}
-                      />
-                    </CTableDataCell>
-                    <CTableDataCell>{user.name}</CTableDataCell>
-                    <CTableDataCell>{user.email}</CTableDataCell>
-                    <CTableDataCell>{user.location}</CTableDataCell>
-                    <CTableDataCell>{user.interests}</CTableDataCell>
-                    <CTableDataCell>
-                      <CTableDataCell className="d-flex">
-                        <div className="d-flex justify-content-center gap-3 w-100">
-                          <CButton
-                            className="text-dark w-75" variant="ghost"
-                            onClick={() => handleEdit(user.id)}
+      <ListHeaderContainer>
+        <h3 className="m-0" style={{ color: "var(--color-primary)" }}>
+          Lista de Usuários
+        </h3>
+
+        <Link to="/usuarios/novo">
+          <Button typeButton="primary">+ Criar Novo Usuário</Button>
+        </Link>
+
+      </ListHeaderContainer>
+
+      <CCardBody>
+        {usuarios.length === 0 ? (
+          <p className="text-center">Nenhum usuário encontrado.</p>
+        ) : (
+          <CTable striped responsive bordered hover>
+            <CTableHead color="light">
+              <CTableRow>
+                <CTableHeaderCell scope="col">Foto</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Nome</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Email</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Localização</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Interesses</CTableHeaderCell>
+                <CTableHeaderCell scope="col" className="text-center">Ações</CTableHeaderCell>
+              </CTableRow>
+            </CTableHead>
+            <CTableBody>
+              {usuarios.map((user) => (
+                <CTableRow key={user.id}>
+                  <CTableDataCell>
+                    <img
+                      src={user.photos}
+                      alt={user.name}
+                      style={{
+                        width: 50,
+                        height: 50,
+                        borderRadius: "50%",
+                        objectFit: "cover"
+                      }}
+                    />
+                  </CTableDataCell>
+                  <CTableDataCell>{user.name}</CTableDataCell>
+                  <CTableDataCell>{user.email}</CTableDataCell>
+                  <CTableDataCell>{user.location}</CTableDataCell>
+                  <CTableDataCell>{user.interests}</CTableDataCell>
+                  <CTableDataCell>
+                    <CTableDataCell className="d-flex">
+                      <div className="d-flex justify-content-center gap-3 w-100">
+                        <CButton
+                          className="text-dark w-75" variant="ghost"
+                          onClick={() => handleEdit(user.id)}
                           color="info"
-                          >
-                            <i className="fa-solid fa-pen-to-square me-1" />    Editar
-                          </CButton>
-                          <CButton
+                        >
+                          <i className="fa-solid fa-pen-to-square me-1" />    Editar
+                        </CButton>
+                        <CButton
                           color="primary"
-                            className="text-dark w-75"
-                            onClick={() => handleViewDetails(user.id)}
-                            variant="ghost" >
-                            <i className="fa-solid fa-eye me-1" /> Detalhes
-                          </CButton>
-                        </div>
-                      </CTableDataCell>
+                          className="text-dark w-75"
+                          onClick={() => handleViewDetails(user.id)}
+                          variant="ghost" >
+                          <i className="fa-solid fa-eye me-1" /> Detalhes
+                        </CButton>
+                      </div>
                     </CTableDataCell>
-                  </CTableRow>
-                ))}
-              </CTableBody>
-            </CTable>
-          )}
-        </CCardBody>
-      
+                  </CTableDataCell>
+                </CTableRow>
+              ))}
+            </CTableBody>
+          </CTable>
+        )}
+      </CCardBody>
+
     </Container>
   );
 };

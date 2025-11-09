@@ -7,6 +7,7 @@ import {
     CRow,
     CCol,
     CSpinner,
+    CButton,
 } from '@coreui/react';
 import Button from '../../../components/Button/Button'; 
 import { Container,ContainerMessageDetails } from './Detalhes.styles';
@@ -72,13 +73,13 @@ const Detalhes = () => {
 
                                 <div className="d-flex flex-wrap gap-3 mt-4 w-100 justify-content-center">
                                     <Link to={`/mensagens/editar/${id}`}>
-                                        <Button typeButton={'primary'}>
+                                        <CButton color='info'>
                                             <i className="fa-solid fa-pen-to-square me-1" /> Editar Mensagem
-                                        </Button>
+                                        </CButton>
                                     </Link>
                                     <Link to="/mensagens/nova">
                                         <Button typeButton={'secondary'}>
-                                            <i className="fa-solid fa-plus me-1" /> Criar Nova Mensagem
+                                            <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Mensagem
                                         </Button>
                                     </Link>
                                    

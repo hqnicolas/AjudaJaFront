@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {CCard, CCardHeader, CCardBody, CForm, CFormLabel, CFormInput, CFormTextarea, CButton, CSpinner, CAlert} from '@coreui/react';
 import { Container } from './Editar.styles'; 
+import Button from '../../../components/Button/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -88,6 +89,23 @@ const Editar = () => {
             .finally(() => setLoading(false));
     };
 
+  const handleDelete = () => {
+        if (!window.confirm('Tem certeza que deseja excluir esta mensagem?')) return;
+        setLoading(true);
+        fetch(url, { method: 'DELETE' })
+            .then(res => {
+                if (res.status === 204) {
+                    setMessage('Mensagem excluído com sucesso!');
+                    setTimeout(() => navigate('/mensagens'), 2000);
+                } else if (res.status === 404) {
+                    setError('Mensagem não encontrado');
+                } else {
+                    throw new Error('Falha ao excluir mensagem');
+                }
+            })
+            .catch(err => setError(err.message))
+            .finally(() => setLoading(false));
+    };
     return (
     
         <Container>
@@ -124,14 +142,16 @@ const Editar = () => {
                                             </>
                                         }
                                     </CButton>
+                                    <CButton color="danger" type="submit" disabled={loading} onClick={handleDelete}>
+                                        {loading ? <CSpinner size="sm" /> : 
+                                            <>
+                                                <i className="fa-solid fa-trash-can me-1" /> Excluir
+                                            </>
+                                        }
+                                    </CButton>
                                 </div>
                                 
                                
-                                <div className="d-flex gap-3">
-                                    <Link to={`/mensagens/detalhes/${id}`} className="btn btn-secondary">
-                                        <i className="fa-solid fa-eye me-1" /> Ver Detalhes
-                                    </Link>
-                                </div>
                             </div>
                         </CForm>
                     )}

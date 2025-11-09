@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
 import { Container, Title, Form, ButtonGroup, Message } from './Editar.styles';
+import { CButton } from '@coreui/react';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -102,8 +103,8 @@ const Editar = () => {
         <>
           <DonationForm donation={donation} onChange={handleChange} />
           <ButtonGroup>
-            <Button typeButton="primary" onClick={handleSubmit}>Salvar</Button>
-            <Button typeButton="secondary" onClick={handleDelete}>Excluir</Button>
+              <CButton color="primary" type="submit" onClick={handleSubmit}> <i className="fa-solid fa-floppy-disk me-1" /> Salvar Alterações</CButton>
+            <CButton color="danger" onClick={handleDelete}>   <i className="fa-solid fa-trash-can me-1" /> Excluir</CButton>
           </ButtonGroup>
         </>
       )}

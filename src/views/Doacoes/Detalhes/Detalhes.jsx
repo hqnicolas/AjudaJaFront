@@ -7,6 +7,7 @@ import {
     CRow,
     CCol,
     CSpinner,
+    CButton,
 } from '@coreui/react';
 
 import { Container, ContainerDetails } from './Detalhes.styles';
@@ -108,13 +109,13 @@ const Detalhes = () => {
 
                                 <div className="d-flex flex-wrap gap-3 mt-4 w-100 justify-content-center">
                                     <Link to={`/doacoes/editar/${id}`}>
-                                        <Button typeButton={'primary'}>
+                                        <CButton color="info" className="text-dark">
                                             <i className="fa-solid fa-pen-to-square me-1" /> Editar Doação
-                                        </Button>
+                                        </CButton>
                                     </Link>
                                     <Link to="/doacoes/novo">
-                                        <Button typeButton={'secondary'}>
-                                            <i className="fa-solid fa-plus me-1" /> Criar Nova Doação
+                                        <Button typeButton={'secondary'} >
+                                            <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Doação
                                         </Button>
                                     </Link>
                                 </div>

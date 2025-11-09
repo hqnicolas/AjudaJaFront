@@ -47,8 +47,22 @@ export const ButtonGroup = styled.div`
   justify-content: flex-start;
   gap: 1rem;
   margin-top: 1rem;
-`;
+  .btn {
+    white-space: nowrap; 
+    padding: 0.5rem 1rem; 
+  }
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    gap: 0.75rem; 
 
+    .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  }
+`;
 export const Message = styled.p`
   color: ${({ type }) => (type === 'error' ? 'red' : 'green')};
   margin-bottom: 1rem;

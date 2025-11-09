@@ -91,25 +91,25 @@ export const ContainerCampaigns = styled.div`
     }
   }
 
-  /* Responsividade */
   @media (max-width: 1200px) {
     .campaigns-list .card {
-      width: 45%; /* 2 cards por linha */
+      width: 45%;
     }
   }
 
   @media (max-width: 768px) {
     .campaigns-list {
       gap: 15px;
+      padding: 1rem;
     }
     .campaigns-list .card {
-      width: 100%; /* 1 card por linha */
+      width: 100%; 
     }
   }
 
   @media (max-width: 576px) {
     .campaigns-list .card {
-      width: 100%; /* mantém 1 card por linha */
+      width: 100%;
     }
   }
 `;

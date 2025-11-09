@@ -13,7 +13,7 @@ import {
   CButton,
 } from '@coreui/react';
 import Button from "../../components/Button/Button";
-import { ListaContainer, ItemMensagem, Container } from "./Listar.styles";
+import { ListaContainer, ItemMensagem, Container, ListHeaderContainer } from "./Listar.styles";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Listar = () => {
   const [mensagens, setMensagens] = useState([]);
@@ -49,18 +49,21 @@ const Listar = () => {
 
   return (
     <Container>
-    
-      <div className="d-flex justify-content-between align-items-center mb-3">
-          <h3 className="m-0" style={{ color: "var(--color-primary)" }}>
-            Lista de Mensagens
-          </h3>
-          <Link to="/mensagens/nova">
-            <Button typeButton="primary">
-              <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Mensagem
-            </Button>
-          </Link>
-        </div>
-        <CCard>
+
+      <ListHeaderContainer>
+
+        <h3 className="m-0" style={{ color: "var(--color-primary)" }}>
+          Lista de Mensagens
+        </h3>
+
+        <Link to="/mensagens/nova">
+          <Button typeButton="primary">
+            <i className="fa-solid fa-plus me-1" /> Criar Nova Mensagem
+          </Button>
+        </Link>
+
+      </ListHeaderContainer>
+      <CCard>
         <CCardBody>
           {mensagens.length === 0 ? (
             <p className="text-center">Nenhuma mensagem encontrada.</p>
@@ -96,7 +99,7 @@ const Listar = () => {
             </ListaContainer>
           )}
         </CCardBody>
-   </CCard>
+      </CCard>
     </Container>
   );
 };
