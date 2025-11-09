@@ -5,7 +5,6 @@ background-color: var(--color-background-home);
 padding: 2rem;
 
 h3 {
-
     font-weight: 700;
     line-height: 1.15;
     color: var(--color-primary);

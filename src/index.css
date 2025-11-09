@@ -3,9 +3,10 @@
 * {
   margin: 0;
   padding: 0;
-  
   box-sizing: border-box;
 }
+
+
 
 :root {
   --color-primary: #553e7c;
@@ -24,8 +25,8 @@
 body {
   font-family: "Sora", sans-serif;
   background-color: var(--color-background);
-  width: 100vw;
-
+  overflow-x: hidden;
+  width: 100%;
   scrollbar-width: 1px; 
     scrollbar-color: var(--color-primary) transparent;
 
