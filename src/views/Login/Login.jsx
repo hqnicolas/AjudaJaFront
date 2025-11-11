@@ -9,29 +9,16 @@ export default function Login() {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Fake
-    const authenticateUser = () => Promise.resolve({ name: 'Demo User', email: 'demo@example.com' });
-
-    authenticateUser()
-      .then((userData) => {
-        login(userData);
-        console.log('User logged in:', userData);
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        console.error('Authentication error:', error);
-      });
+  const handleLoginSuccess = (userData) => {
+    login(userData);
+    console.log('User logged in:', userData);
+    navigate(from, { replace: true });
   };
 
   return (
     <Container>
       <h1>Bem vindo (a)!</h1>
-      <form onSubmit={handleSubmit}>
-        <Forms />
-      </form>
+      <Forms onLoginSuccess={handleLoginSuccess} />
     </Container>
   );
 }
