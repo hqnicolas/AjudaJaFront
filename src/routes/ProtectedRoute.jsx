@@ -1,7 +1,15 @@
-import { Navigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useUserContext } from '../context/UserContext';
 
-export default function ProtectedRoute({ children }) {
-  const { user } = useUser();
-  return user ? children : <Navigate to="/login" replace />;
-}
+const ProtectedRoute = ({ children }) => {
+  const { user } = useUserContext();
+  const location = useLocation();
+
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedRoute;
