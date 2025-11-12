@@ -76,7 +76,7 @@ const Detalhes = () => {
                                     <strong>Quantidade:</strong> {donation.quantity || 'N/A'}
                                 </p>
                                 <p>
-                                    <strong>Doador:</strong> {donation.donor || 'Anônimo'}
+                                    <strong>Estoque:</strong> {donation.donor || 'Local'}
                                 </p>
                                 <p>
                                     <strong>Data de Recebimento:</strong> {formatarData(donation.receiverDate)}

@@ -77,7 +77,7 @@ export default function FormDonationComponent() {
         </CCol>
 
         <CCol md={6}>
-          <CFormLabel htmlFor="donor">Doador</CFormLabel>
+          <CFormLabel htmlFor="donor">Armazém</CFormLabel>
           <CFormInput
             id="donor"
             name="donor"
@@ -85,7 +85,7 @@ export default function FormDonationComponent() {
             value={formData.donor}
             onChange={handleChange}
             required
-            placeholder="Nome do doador"
+            placeholder="Nome do Amazém"
           />
         </CCol>
 

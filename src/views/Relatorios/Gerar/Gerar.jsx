@@ -13,11 +13,11 @@ const RelatorioItem = ({ relatorio }) => (
     <h3>Nome da Doação: {relatorio.name}</h3>
     <p><strong>Tipo:</strong> {relatorio.donationType}</p>
     <p><strong>Quantidade:</strong> {relatorio.quantity}</p>
-    <p><strong>Doador:</strong> {relatorio.donor}</p>
+    <p><strong>Armazém:</strong> {relatorio.donor}</p>
     <p><strong>Data de Recebimento:</strong> {new Date(relatorio.receiverDate).toLocaleDateString("pt-BR")}</p>
     <p><strong>Data de Validade:</strong> {new Date(relatorio.expiryDate).toLocaleDateString("pt-BR")}</p>
     <p><strong>Período de Validade:</strong> {relatorio.validityPeriod} meses</p>
-    <Link to={`/campanhas/detalhes/${relatorio.id}`}>
+    <Link to={`/doacoes/detalhes/${relatorio.id}`}>
       <Button typeButton="secondary">Ver Detalhes</Button>
     </Link>
   </div>
@@ -106,13 +106,13 @@ const Gerar = () => {
             </CCol>
 
             <CCol md={6} lg={3}>
-              <CFormLabel htmlFor="donor">Doador</CFormLabel>
+              <CFormLabel htmlFor="donor">Armazém</CFormLabel>
               <CFormInput
                 type="text"
                 id="donor"
                 value={donor}
                 onChange={(e) => setDonor(e.target.value)}
-                placeholder="Nome ou ID do doador"
+                placeholder="Nome ou ID do Armazém"
                 required
               />
             </CCol>

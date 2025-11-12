@@ -69,7 +69,7 @@ const Listar = () => {
                 <CTableHeaderCell scope="col">Nome</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Tipo</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Quantidade</CTableHeaderCell>
-                <CTableHeaderCell scope="col">Doador</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Armazém</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Recebimento</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Expiração</CTableHeaderCell>
                 <CTableHeaderCell scope="col" className="text-center">Ações</CTableHeaderCell>

@@ -135,7 +135,7 @@ export default function Nova() {
                         </CCol>
 
                         <CCol md={6}>
-                            <CFormLabel htmlFor="donor">Doador</CFormLabel>
+                            <CFormLabel htmlFor="donor">Armazém</CFormLabel>
                             <CInputGroup>
                                 <CInputGroupText>
                                     <i className="fa-solid fa-hands-helping" />
@@ -146,7 +146,7 @@ export default function Nova() {
                                     name="donor"
                                     value={formData.donor}
                                     onChange={handleChange}
-                                    placeholder="Nome do Doador ou 'Anônimo'"
+                                    placeholder="Nome do Armazém ou 'Estoque'"
                                     required
                                 />
                             </CInputGroup>

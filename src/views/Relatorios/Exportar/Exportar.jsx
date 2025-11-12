@@ -111,13 +111,13 @@ return (
                         </CFormSelect>
                     </CCol>
                     <CCol md={6} lg={4}>
-                        <CFormLabel htmlFor="donor">Doador (Opcional)</CFormLabel>
+                        <CFormLabel htmlFor="donor">Armazém (Estoque)</CFormLabel>
                         <CFormInput
                             type="text"
                             id="donor"
                             value={donor}
                             onChange={(e) => setDonor(e.target.value)}
-                            placeholder="Nome ou ID do doador"
+                            placeholder="Nome ou ID do Armazém"
                         />
                     </CCol>
                     <CCol md={6} lg={4}>

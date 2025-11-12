@@ -21,7 +21,7 @@ const DonationForm = ({ donation, onChange }) => (
       <input type="number" name="quantity" value={donation.quantity || ''} onChange={onChange} />
     </label>
     <label>
-      Doador:
+      Armazém:
       <input type="text" name="donor" value={donation.donor || ''} onChange={onChange} />
     </label>
     <label>

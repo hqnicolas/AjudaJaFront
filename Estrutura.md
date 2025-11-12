@@ -23,7 +23,7 @@
 #### 3. **Módulo: Relatórios**
 
 - `/relatorios`
-  - Formulário de filtros (tipo, datas, doador) para gerar relatório (POST `/relatorio`)
+  - Formulário de filtros (tipo, datas, Estocagem) para gerar relatório (POST `/relatorio`)
   - Exibe o relatório gerado
 - `/relatorios/exportar`
   - Exportação do relatório em PDF (GET `/donation/reports/pdf/{...}`)
