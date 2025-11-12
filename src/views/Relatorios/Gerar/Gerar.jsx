@@ -101,7 +101,7 @@ const Gerar = () => {
               >
                 <option value="">Selecione...</option>
                 <option value="Material">Material</option>
-                <option value="Financeiro">Financeiro</option>
+                <option value="Financeira">Financeira</option>
               </CFormSelect>
             </CCol>
 

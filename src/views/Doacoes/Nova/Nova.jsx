@@ -112,7 +112,7 @@ export default function Nova() {
                             >
                                 <option value="">Selecione</option>
                                 <option value="Material">Material</option>
-                                <option value="Financeiro">Financeiro</option>
+                                <option value="Financeira">Financeira</option>
                             </CFormSelect>
                         </CCol>
 
@@ -128,7 +128,7 @@ export default function Nova() {
                                     name="quantity"
                                     value={formData.quantity}
                                     onChange={handleChange}
-                                    placeholder="Ex: 50 ou 1000.50 (se financeiro)"
+                                    placeholder="Ex: 50 ou 1000.50 (se financeira)"
                                     required
                                 />
                             </CInputGroup>
