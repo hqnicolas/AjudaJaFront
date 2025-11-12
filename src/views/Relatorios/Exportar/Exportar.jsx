@@ -150,9 +150,6 @@ return (
                         </CButton>
                     </CCol>
                 </CForm>
-
-                {/* Mensagens de Feedback Centralizadas */}
-                {/* Adicionado 'mx-auto' e 'text-center' para centralizar o texto dentro da div de feedback */}
                 {error && <div className="mt-3 p-2 text-white bg-danger rounded mx-auto text-center" style={{ maxWidth: '400px' }}>{error} 😢</div>}
                 {message && <div className="mt-3 p-2 text-white bg-success rounded mx-auto text-center" style={{ maxWidth: '400px' }}>{message}</div>}
                 

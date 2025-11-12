@@ -82,8 +82,7 @@ export default function Nova() {
 
                 <CForm onSubmit={handleSubmit}>
                     <CRow className="g-3">
-                        
-                        {/* Conteúdo da Mensagem */}
+
                         <CCol xs={12}>
                             <CFormLabel htmlFor="conteudo">Conteúdo da Mensagem</CFormLabel>
                             <CFormTextarea
@@ -97,7 +96,6 @@ export default function Nova() {
                             />
                         </CCol>
 
-                        {/* ID do Remetente (Opcional, se 'id' existir) */}
                         {id && (
                             <CCol xs={12}>
                                 <CFormLabel htmlFor="remetenteId">ID do Remetente</CFormLabel>
@@ -114,9 +112,7 @@ export default function Nova() {
                         
                     </CRow>
 
-                    {/* Botão de Envio com o estilo de NovoUsuario */}
                     <div className="btn-submit">
-                        {/* Substituído CButton pelo componente Button customizado */}
                         <Button typeButton="primary" type="submit" disabled={loading}>
                             {loading ? (
                                 <>
@@ -129,7 +125,6 @@ export default function Nova() {
                         </Button>
                     </div>
 
-                    {/* Mensagens de Feedback */}
                     {error && (
                         <p className="text-center mt-3" style={{ color: 'red', fontWeight: '500' }}>
                             {error} 😢

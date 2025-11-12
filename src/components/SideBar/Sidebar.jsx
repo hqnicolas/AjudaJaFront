@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useUserContext } from '../../context/UserContext';
 import {
   Drawer,
   List,
@@ -7,27 +8,35 @@ import {
   ListItemText,
   IconButton,
   Typography,
-} from '@mui/material'
+} from '@mui/material';
 import {
   Settings,
   InsertChart,
   People,
   Notifications,
   Description,
-} from '@mui/icons-material'
-import { ToggleButtonContainer } from './Sidebar.styles'
-import { logo_ajude_ja_minimizada } from '../../assets/logo'
-import { Link } from 'react-router-dom'
+} from '@mui/icons-material';
+import { ToggleButtonContainer } from './Sidebar.styles';
+import { logo_ajude_ja_minimizada } from '../../assets/logo';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(false)
-  const toggleDrawer = () => setOpen(!open)
-  const closeSidebar = () => setOpen(false)
-const soraFontSx = { fontFamily: '"Sora", sans-serif' };
+  const { user, logout } = useUserContext();
+  const [open, setOpen] = useState(false);
+  const toggleDrawer = () => setOpen(!open);
+  const closeSidebar = () => setOpen(false);
+  const soraFontSx = { fontFamily: '"Sora", sans-serif' };
+
+  if (!user) return null;
+
+  const handleLogout = () => {
+    logout();
+    closeSidebar();
+  };
 
   return (
     <>
-      <ToggleButtonContainer onClick={toggleDrawer} >
+      <ToggleButtonContainer onClick={toggleDrawer}>
         <IconButton
           sx={{
             color: 'var(--color-primary)',
@@ -42,7 +51,6 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
               color: 'var(--color-primary-hover)',
               boxShadow: 'none !important',
             },
-
           }}
         >
           <i className="fa-solid fa-gear"></i>
@@ -57,18 +65,21 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
           sx: { width: 240, borderRight: '1px solid #ddd', zIndex: 1050 },
         }}
       >
-         <div style={{ padding: '1rem', borderBottom: '1px solid #eee' }}>
-          <img src={logo_ajude_ja_minimizada} alt="Logo" style={{width: '2.5rem',height: 'auto',marginRight: '0.5rem'}} />
+        <div style={{ padding: '1rem', borderBottom: '1px solid #eee' }}>
+          <img
+            src={logo_ajude_ja_minimizada}
+            alt="Logo"
+            style={{ width: '2.5rem', height: 'auto', marginRight: '0.5rem' }}
+          />
         </div>
-   <List>
-       
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              px: 2, 
-              py: 1, 
-              color: 'text.', 
-              ...soraFontSx 
+        <List>
+          <Typography
+            variant="h6"
+            sx={{
+              px: 2,
+              py: 1,
+              color: 'text.',
+              ...soraFontSx,
             }}
           >
             Administração
@@ -110,8 +121,22 @@ const soraFontSx = { fontFamily: '"Sora", sans-serif' };
             <ListItemIcon><Description /></ListItemIcon>
                 <ListItemText primary="Relatórios" primaryTypographyProps={{ sx: soraFontSx,fontWeight: 500,color:'var(--color-text)' }} />
           </ListItemButton>
+
+          <ListItemButton onClick={handleLogout}>
+            <ListItemIcon>
+              <i className="fa-solid fa-sign-out-alt"></i>
+            </ListItemIcon>
+            <ListItemText
+              primary="Logout"
+              primaryTypographyProps={{
+                sx: soraFontSx,
+                fontWeight: 500,
+                color: 'var(--color-text)',
+              }}
+            />
+          </ListItemButton>
         </List>
       </Drawer>
     </>
-  )
+  );
 }

@@ -47,7 +47,7 @@ export default function Forms({ onLoginSuccess }) {
         const data = await res.json();
         const exist = data.length > 0;
         setUsersExist(exist);
-        if (!exist) setTypeForm('register'); // Only show registration form if no users exist
+        if (!exist) setTypeForm('register');
       } catch (error) {
         console.error('Erro ao verificar usuários existentes:', error);
       }
