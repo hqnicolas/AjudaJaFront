@@ -47,7 +47,7 @@ export default function Forms({ onLoginSuccess }) {
         const data = await res.json();
         const exist = data.length > 0;
         setUsersExist(exist);
-        if (!exist) setTypeForm('register');
+        if (!exist) setTypeForm('register'); // Only show registration form if no users exist
       } catch (error) {
         console.error('Erro ao verificar usuários existentes:', error);
       }
@@ -328,20 +328,6 @@ export default function Forms({ onLoginSuccess }) {
               </>
             )}
           </CRow>
-
-          <div className="text-center mt-3 mb-3">
-            <span className="change-form">
-              {typeForm === 'register' ? 'Já possui uma conta? ' : 'Ainda não possui uma conta? '}
-              <span
-                className="change-form-child"
-                style={{ cursor: 'pointer', fontWeight: 'bold' }}
-                onClick={changeForm}
-              >
-                {typeForm === 'register' ? 'Entre' : 'Cadastre-se'}
-              </span>
-              .
-            </span>
-          </div>
 
           <div className="btn-submit">
             <Button typeButton="primary" type="submit" disabled={loadingEmailCheck}>
