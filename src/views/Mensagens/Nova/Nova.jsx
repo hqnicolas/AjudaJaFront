@@ -56,7 +56,7 @@ export default function Nova() {
             const data = await response.json();
 
             if (response.ok) {
-                setMessage(data.mensagem || 'Mensagem enviada com sucesso! 🎉');
+                setMessage(data.mensagem || 'Mensagem enviada com sucesso!');
                 setError(null);
                 setFormData({
                     remetenteId: id || '', 
@@ -127,7 +127,7 @@ export default function Nova() {
 
                     {error && (
                         <p className="text-center mt-3" style={{ color: 'red', fontWeight: '500' }}>
-                            {error} 😢
+                            {error}
                         </p>
                     )}
                     {message && (
