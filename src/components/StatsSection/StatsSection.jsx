@@ -33,6 +33,3 @@ export const StatsSection = () => {
     </StatsContainer>
   );
 };
-
-// Não se esqueça de exportar, caso este seja um arquivo separado
-// export default StatsSection;
