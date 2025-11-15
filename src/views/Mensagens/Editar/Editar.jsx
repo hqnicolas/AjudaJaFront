@@ -88,24 +88,6 @@ const Editar = () => {
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
     };
-
-  const handleDelete = () => {
-        if (!window.confirm('Tem certeza que deseja excluir esta mensagem?')) return;
-        setLoading(true);
-        fetch(url, { method: 'DELETE' })
-            .then(res => {
-                if (res.status === 204) {
-                    setMessage('Mensagem excluído com sucesso!');
-                    setTimeout(() => navigate('/mensagens'), 2000);
-                } else if (res.status === 404) {
-                    setError('Mensagem não encontrado');
-                } else {
-                    throw new Error('Falha ao excluir mensagem');
-                }
-            })
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false));
-    };
     return (
     
         <Container>
@@ -139,13 +121,6 @@ const Editar = () => {
                                         {loading ? <CSpinner size="sm" /> : 
                                             <>
                                                 <i className="fa-solid fa-floppy-disk me-1" /> Salvar Alterações
-                                            </>
-                                        }
-                                    </CButton>
-                                    <CButton color="danger" type="submit" disabled={loading} onClick={handleDelete}>
-                                        {loading ? <CSpinner size="sm" /> : 
-                                            <>
-                                                <i className="fa-solid fa-trash-can me-1" /> Excluir
                                             </>
                                         }
                                     </CButton>

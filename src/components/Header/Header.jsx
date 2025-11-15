@@ -54,28 +54,6 @@ export default function Header() {
             <CNavItem>
               <CNavLink
                 as={Link}
-                to="/ongs"
-                className="text-primary fw-semibold"
-                onClick={handleNavLinkClick}
-              >
-                Ong's
-              </CNavLink>
-            </CNavItem>
-
-            <CNavItem>
-              <CNavLink
-                as={Link}
-                to="/noticias"
-                className="text-primary fw-semibold"
-                onClick={handleNavLinkClick}
-              >
-                Notícias
-              </CNavLink>
-            </CNavItem>
-
-            <CNavItem>
-              <CNavLink
-                as={Link}
                 to="/sobre"
                 className="text-primary fw-semibold"
                 onClick={handleNavLinkClick}

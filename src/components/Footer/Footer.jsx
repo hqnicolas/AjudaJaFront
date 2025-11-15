@@ -37,16 +37,16 @@ export const Footer = () => {
           <div className="col">
             <h5 className="fw-semibold mb-4">Redes Sociais</h5>
             <div className="d-flex gap-4">
-              <a href="#" className="social-link">
+              <a href="https://facebook.com" className="social-link" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-facebook fs-5" />
               </a>
-              <a href="#" className="social-link">
+              <a href="https://instagram.com" className="social-link" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-instagram fs-5" />
               </a>
-              <a href="#" className="social-link">
+              <a href="https://x.com" className="social-link" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-x-twitter fs-5" />
               </a>
-              <a href="#" className="social-link">
+              <a href="https://youtube.com" className="social-link" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-youtube fs-5" />
               </a>
             </div>

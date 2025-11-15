@@ -8,8 +8,6 @@ import { UserProvider } from './context/UserContext.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
 
 import ListarCampanhas from './views/Campanhas/ListarCampanhas.jsx';
-import NovaDoacao from './views/Campanhas/Nova/Nova.jsx';
-import EditarCampanhas from './views/Campanhas/Editar/EditarCampanhas.jsx';
 import DetalhesCampanha from './views/Campanhas/Detalhes/Detalhes.jsx';
 import GerarRelatorio from './views/Relatorios/Gerar/Gerar.jsx';
 import ExportarRelatorio from './views/Relatorios/Exportar/Exportar.jsx';
@@ -23,6 +21,7 @@ import EditarUsuario from './views/Usuarios/Editar/Editar.jsx';
 import DetalhesUsuario from './views/Usuarios/Detalhes/Detalhes.jsx';
 import Login from './views/Login/Login.jsx';
 import Home from './views/Home/Home.jsx';
+import Sobre from './views/Sobre/Sobre.jsx';
 import ListarDoacoes from './views/Doacoes/Listar.jsx';
 import NovoDoacao from './views/Doacoes/Nova/Nova.jsx';
 import DetalhesDoacao from './views/Doacoes/Detalhes/Detalhes.jsx';
@@ -38,6 +37,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
 
+            <Route path="Sobre" element={<Sobre />} />
+
             <Route path="campanhas" element={<ListarCampanhas />} />
             <Route path="campanhas/detalhes/:id" element={<DetalhesCampanha />} />
 
@@ -50,22 +51,6 @@ createRoot(document.getElementById('root')).render(
             <Route path="doacoes" element={<ListarDoacoes />} />
             <Route path="doacoes/detalhes/:id" element={<DetalhesDoacao />} />
 
-            <Route
-              path="campanhas/doar/:id"
-              element={
-                <ProtectedRoute>
-                  <NovaDoacao />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="campanhas/editar/:id"
-              element={
-                <ProtectedRoute>
-                  <EditarCampanhas />
-                </ProtectedRoute>
-              }
-            />
             <Route
               path="relatorios/gerar"
               element={
