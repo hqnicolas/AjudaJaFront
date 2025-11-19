@@ -1,108 +1,142 @@
-
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
-  background-color: var(--color-background-home); 
-  width: 100%;
-  min-height: calc(100vh - 4rem); 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const SectionHero = styled.section`
+  background: var(--color-primary);
+  color: #fff;
+  padding: 6rem 1rem;
+  text-align: center;
 
-  flex-direction: column;
-  gap: 5rem;
-  .content-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  .content-container h1 {
-
+  h1 {
+    font-size: 3rem;
     font-weight: 700;
-    line-height: 1.15;
-    color: var(--color-primary);
-    margin: 0;
   }
 
-  .content-container h1 span {
-    color: var(--color-secondary);
+  p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
   }
 
-  .content-container p {
-    font-size: 1.05rem;
-    margin: 1rem 0;
-    color: var(--color-primary);
-    max-width: 520px;
-    font-weight: 600;
-  }
-
-  .content-container img {
-    width: 100%;
-    max-width: 480px;
-    height: auto;
-    display: block;
-    margin-left: 2rem;
-  }
-
-  @media (max-width: 992px) {
-    min-height: auto; 
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-
-    .content-container {
-      gap: 1.5rem;
-      flex-direction: column-reverse; 
-      text-align: center;
-    }
-    .content-container h1 {
-      margin-left: 1.1rem;
+  @media (max-width: 768px) {
+    h1 {
       font-size: 2.2rem;
-      text-align: start;
     }
-    .content-container p {
+    p {
       font-size: 1rem;
-      max-width: 100%;
-      padding: 0 1rem;
-      text-align: start;
     }
-    .content-container img {
-      max-width: 300px;
-      margin-bottom: 1rem;
-      margin-left: 0; 
-    }
-  }
-
-  @media (max-width: 480px) {
-    flex-direction: column-reverse;
-    
-    .content-container h1 {
-      font-size: 1.6rem;
-      margin-left: 1.1rem;
-      text-align: start;
-    }
-    .content-container p {
-      font-size: 0.95rem;
-      text-align: start;
-    }
-    .content-container a button {
-      width: 50%;
-      margin-left: 1.1rem;
-      text-align: start;
-    }
-    padding: 1rem;
   }
 `;
 
-export const StatsContainer = styled.footer`
-  margin-top: 5rem;
-  `;
-export const HowItWorksContainer = styled.footer`
-  margin-top: 5rem;
-  `;
-export const FooterContainer = styled.footer`
+export const SectionContainer = styled.section`
 
- `;
+  padding: 4rem 1rem;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .title {
+    font-weight: 700;
+    margin-top: 1rem;
+    color: var(--color-primary);
+  }
+
+  .text {
+    max-width: 650px;
+    margin: 0.5rem auto 2rem auto;
+    color: var(--color-primary);
+    opacity: 0.7;
+  }
+
+  .icon-box {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem auto;
+    font-size: 2rem;
+
+    &.primary {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+    &.danger {
+      background: #fee;
+      color: #d9534f;
+    }
+    &.info {
+      background: #e7f5ff;
+      color: var(--color-secondary);
+    }
+  }
+
+  .solution-box {
+    padding: 1.5rem;
+  }
+
+  .solution-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+`;
+
+export const ProblemCard = styled.div`
+  background: var(--color-background-home);
+  border: 1px solid var(--bs-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: var(--bs-shadow-sm);
+
+  h4 {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--color-primary);
+    opacity: 0.7;
+  }
+`;
+
+export const ValuesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ValueCard = styled.div`
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--bs-shadow-sm);
+
+  h4 {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  p {
+    margin-top: 0.4rem;
+    color: var(--color-primary);
+    opacity: 0.7;
+  }
+`;
+
+export const FooterContainer = styled.div`
+  margin-top: 4rem;
+`;

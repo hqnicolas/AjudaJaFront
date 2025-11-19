@@ -11,8 +11,6 @@ export const StatsSection = () => {
 
   return (
   <StatsContainer>
-   
-   
       <div className="container">
         <div className="row row-cols-2 row-cols-lg-4 g-4">
           {stats.map((stat, index) => (

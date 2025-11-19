@@ -36,8 +36,14 @@ export default function Home() {
           </CCol>
         </CRow>
       </MainContainer>
+      <StatsContainer>
+        <StatsSection />
+      </StatsContainer>
+      <HowItWorksContainer>
+        <HowItWorks />
+      </HowItWorksContainer>
       <FooterContainer>
-      <Footer />
+        <Footer />
       </FooterContainer>
     </>
   );
