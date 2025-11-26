@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
-  CCard,
-  CCardBody,
-  CCardHeader,
+  CForm,
+  CFormInput,
+  CFormLabel,
+  CInputGroup,
+  CInputGroupText,
   CRow,
   CCol,
+  CFormSelect,
+  CFormTextarea,
   CSpinner,
-  CImage,
-  CButton
 } from '@coreui/react';
-import { Container, ContainerUserDetails } from './Detalhes.styles';
+import { Container } from './Detalhes.styles';
 import Button from '../../../components/Button/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function DetalhesUsuario() {
   const { id } = useParams();
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const handleEdit = (id) => navigate(`/usuarios/editar/${id}`);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!id) return;
 
@@ -30,15 +33,17 @@ export default function DetalhesUsuario() {
         }
         return res.json();
       })
-      .then(data => setUser(data))
-      .catch(err => console.error(err));
+      .then(data => {
+        if (data.dateOfBirth) {
+          data.dateOfBirth = data.dateOfBirth.slice(0, 10);
+        }
+        setUser(data);
+      })
+      .catch(err => console.error(err))
+      .finally(() => setLoading(false));
   }, [id]);
 
-  const formatarData = (data) => {
-    return new Date(data).toLocaleDateString('pt-BR');
-  };
-
-  if (!user) {
+  if (loading) {
     return (
       <Container>
         <CSpinner color="primary" />
@@ -47,43 +52,137 @@ export default function DetalhesUsuario() {
     );
   }
 
+  if (!user) {
+    return (
+      <Container>
+        <p>Usuário não encontrado.</p>
+      </Container>
+    );
+  }
+
   return (
     <Container>
-      <h1>Detalhes do Usuário</h1>
+      <div className="forms">
+        <h2 className="text-center mb-4">Detalhes do Usuário</h2>
 
-      <CRow className="justify-content-center w-100">
-        <CCol xs={12} md={8} lg={6}>
-          <CCard className="shadow-sm">
-            <CCardHeader className="text-center fw-bold" style={{ color: 'var(--color-primary)' }}>
-              Informações do Usuário
-            </CCardHeader>
-            <CCardBody>
-              <ContainerUserDetails>
-                {user.photos && (
-                  <CImage
-                  src={user.photos}
-                  alt={`Foto de ${user.name}`}
-                  className="mb-3 rounded"
-                  width={200}
-                  />
-                )}
-                <h3>{user.name}</h3>
-                <Button typeButton={'primary'} onClick={() => handleEdit(user.id)}>Editar</Button>
-                <p><strong>Email:</strong> {user.email}</p>
-                <p><strong>Data de Nascimento:</strong> {formatarData(user.dateOfBirth)}</p>
-                <p><strong>Gênero:</strong> {user.gender}</p>
-                <p><strong>Localização:</strong> {user.location}</p>
-                <p><strong>Preferências:</strong> {user.preferences}</p>
-                <p><strong>Biografia:</strong> {user.biography}</p>
-                <p><strong>Interesses:</strong> {user.interests}</p>
-              </ContainerUserDetails>
-            </CCardBody>
+        <CForm>
+          <CRow className="g-3">
+            <CCol md={6}>
+              <CFormLabel>Nome</CFormLabel>
+              <CInputGroup>
+                <CInputGroupText>
+                  <i className="fa-solid fa-user" />
+                </CInputGroupText>
+                <CFormInput
+                  type="text"
+                  value={user.name || ''}
+                  readOnly
+                  disabled
+                />
+              </CInputGroup>
+            </CCol>
 
+            <CCol md={6}>
+              <CFormLabel>Email</CFormLabel>
+              <CInputGroup>
+                <CInputGroupText>
+                  <i className="fa-solid fa-envelope" />
+                </CInputGroupText>
+                <CFormInput
+                  type="email"
+                  value={user.email || ''}
+                  readOnly
+                  disabled
+                />
+              </CInputGroup>
+            </CCol>
 
+            <CCol md={6}>
+              <CFormLabel>Data de Nascimento</CFormLabel>
+              <CFormInput
+                type="date"
+                value={user.dateOfBirth || ''}
+                readOnly
+                disabled
+              />
+            </CCol>
 
-          </CCard>
-        </CCol>
-      </CRow>
+            <CCol md={6}>
+              <CFormLabel>Gênero</CFormLabel>
+              <CFormInput
+                type="text"
+                value={user.gender || ''}
+                readOnly
+                disabled
+              />
+            </CCol>
+
+            <CCol md={6}>
+              <CFormLabel>Localização</CFormLabel>
+              <CFormInput
+                type="text"
+                value={user.location || ''}
+                readOnly
+                disabled
+              />
+            </CCol>
+
+            <CCol md={6}>
+              <CFormLabel>Preferências</CFormLabel>
+              <CFormInput
+                type="text"
+                value={user.preferences || ''}
+                readOnly
+                disabled
+              />
+            </CCol>
+
+            <CCol md={6}>
+              <CFormLabel>Interesses</CFormLabel>
+              <CFormInput
+                type="text"
+                value={user.interests || ''}
+                readOnly
+                disabled
+              />
+            </CCol>
+
+            <CCol md={12}>
+              <CFormLabel>Biografia</CFormLabel>
+              <CFormTextarea
+                value={user.biography || ''}
+                readOnly
+                disabled
+                rows={4}
+              />
+            </CCol>
+
+            <CCol md={12}>
+              <CFormLabel>Foto (URL)</CFormLabel>
+              <CFormInput
+                type="url"
+                value={user.photos || ''}
+                readOnly
+                disabled
+              />
+              {user.photos && (
+                <div className="mt-2 text-center">
+                  <img src={user.photos} alt="Foto do usuário" style={{ maxWidth: '100%', maxHeight: '200px', borderRadius: '8px' }} />
+                </div>
+              )}
+            </CCol>
+          </CRow>
+
+          <div className="d-flex justify-content-center gap-3 mt-4">
+            <Button typeButton="primary" type="button" onClick={() => navigate(`/usuarios/editar/${user.id}`)}>
+              Editar
+            </Button>
+            <Button typeButton="secondary" type="button" onClick={() => navigate(-1)}>
+              Voltar
+            </Button>
+          </div>
+        </CForm>
+      </div>
     </Container>
   );
 }

@@ -15,21 +15,34 @@ export const ButtonContainer = styled.button`
     props.typeButton == 'primary'
       ? 'var(--color-primary)'
       : props.typeButton == 'secondary'
-      ? 'var(--color-secondary)'
-      : 'var(--grey-0)'};
+        ? 'var(--color-secondary)'
+        : 'var(--grey-0)'};
 
   color: ${(props) =>
     props.typeButton == 'primary'
       ? '#fff'
       : props.typeButton == 'secondary'
-      ? 'var(--color-primary)'
-      : 'var(--grey-0)'};
+        ? 'var(--color-primary)'
+        : 'var(--grey-0)'};
+
+  ${(props) =>
+    props.circle &&
+    `
+    border-radius: 50%;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `}
 
    &:hover {
     background-color: ${(props) =>
-        props.typeButton == 'primary'
-        ? 'var(--color-primary-hover)'
-        : props.typeButton == 'secondary'
+    props.typeButton == 'primary'
+      ? 'var(--color-primary-hover)'
+      : props.typeButton == 'secondary'
         ? 'var(--color-secondary-hover)'
         : 'var(--grey-0)'};
       }

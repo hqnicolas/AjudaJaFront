@@ -1,57 +1,47 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 93%;
-    margin: 0 auto;
-    padding-top: 1.5rem;
-    gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
 
-    h1 {
-        text-align: center;
-        color: var(--color-primary);
-        margin-bottom: 1rem;
-    }
-`;
-
-export const ContainerDetails = styled.div` 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    text-align: left;
-    gap: 0.5rem;
-    padding: 1rem; 
+  .forms {
     width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
-    p {
+    h2 {
+      color: var(--color-primary);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .btn-submit {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      button {
         width: 100%;
-        font-size: 0.95rem;
-        color: #333;
-        margin: 0.5rem 0;
-        line-height: 1.6;
+      }
     }
+  }
 
-    h3 {
-        margin-bottom: 0.8rem;
-        color: var(--color-primary);
-        align-self: center; 
+  @media (max-width: 576px) {
+    padding: 1rem;
+
+    .forms {
+      padding: 1.5rem;
+      max-width: 100%;
     }
-
-
-    .content-block {
-        background-color: #f9f9f9;
-        padding: 15px;
-        border-radius: 5px;
-        border-left: 3px solid var(--color-primary);
-        word-break: break-word;
-    }
-
-    @media (max-width: 576px) {
-        p {
-            font-size: 0.9rem;
-        }
-    }
+  }
 `;

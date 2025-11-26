@@ -9,6 +9,8 @@ import {
     CRow,
     CCol,
     CFormSelect,
+    CSpinner,
+    CAlert
 } from '@coreui/react';
 
 import { Container } from './Nova.styles';
@@ -63,7 +65,7 @@ export default function Nova() {
                     receiverDate: '',
                     validityPeriod: '',
                 });
-                navigate('/doacoes');
+                setTimeout(() => navigate('/doacoes'), 2000);
             } else {
                 console.error('Erro no servidor:', data);
                 setMessage(data.mensagem || 'Erro ao criar doação.');
@@ -95,7 +97,8 @@ export default function Nova() {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    placeholder="Ex: Roupas, Alimentos, Medicamentos"
+                                    placeholder="Ex: Cesta Básica"
+                                    maxLength={255}
                                     required
                                 />
                             </CInputGroup>
@@ -128,7 +131,7 @@ export default function Nova() {
                                     name="quantity"
                                     value={formData.quantity}
                                     onChange={handleChange}
-                                    placeholder="Ex: 50 ou 1000.50 (se financeira)"
+                                    placeholder="Ex: 10"
                                     required
                                 />
                             </CInputGroup>
@@ -146,7 +149,8 @@ export default function Nova() {
                                     name="donor"
                                     value={formData.donor}
                                     onChange={handleChange}
-                                    placeholder="Nome do Armazém ou 'Estoque'"
+                                    placeholder="Ex: Centro de Distribuição"
+                                    maxLength={255}
                                     required
                                 />
                             </CInputGroup>
@@ -160,6 +164,7 @@ export default function Nova() {
                                 name="receiverDate"
                                 value={formData.receiverDate}
                                 onChange={handleChange}
+                                max="9999-12-31"
                                 required
                             />
                         </CCol>
@@ -181,22 +186,31 @@ export default function Nova() {
                                 />
                             </CInputGroup>
                         </CCol>
-                        
-                     </CRow>
+                    </CRow>
 
-                    <div className="btn-submit mt-4">
+                    <div className="d-flex justify-content-center gap-3 mt-4">
                         <Button typeButton="primary" type="submit" disabled={loading}>
-                            {loading ? 'Criando...' : 'Criar Doação'}
+                            {loading ? (
+                                <>
+                                    <CSpinner component="span" size="sm" aria-hidden="true" className="me-2" />
+                                    Criando...
+                                </>
+                            ) : (
+                                'Criar Doação'
+                            )}
+                        </Button>
+                        <Button typeButton="secondary" type="button" onClick={() => navigate(-1)} disabled={loading}>
+                            Cancelar
                         </Button>
                     </div>
 
                     {message && (
-                        <p className="text-center mt-3" style={{ color: response.ok ? '#007bff' : 'red', fontWeight: '500' }}>
+                        <CAlert color={isSuccess ? 'success' : 'danger'} className="mt-3 text-center">
                             {message}
-                        </p>
+                        </CAlert>
                     )}
                 </CForm>
             </div>
         </Container>
     );
-} 
+}

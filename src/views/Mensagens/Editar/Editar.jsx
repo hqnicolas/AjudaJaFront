@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import {CCard, CCardHeader, CCardBody, CForm, CFormLabel, CFormInput, CFormTextarea, CButton, CSpinner, CAlert} from '@coreui/react';
-import { Container } from './Editar.styles'; 
-import Button from '../../../components/Button/Button';
+import { useParams, useNavigate } from 'react-router-dom';
+import { CCard, CCardHeader, CCardBody, CForm, CFormLabel, CFormInput, CFormTextarea, CButton, CSpinner, CAlert } from '@coreui/react';
+import { Container } from './Editar.styles';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -15,15 +14,14 @@ const MensagemForm = ({ mensagem, onChange }) => {
                     type="datetime-local"
                     id="dataEnvio"
                     name="dataEnvio"
-                   
                     value={mensagem.dataEnvio?.slice(0, 16) || ''}
                     onChange={onChange}
+                    max="9999-12-31T23:59"
                     required
                 />
             </div>
-            
-          
-            <div> 
+
+            <div>
                 <CFormLabel htmlFor="conteudo">Conteúdo</CFormLabel>
                 <CFormTextarea
                     id="conteudo"
@@ -31,6 +29,7 @@ const MensagemForm = ({ mensagem, onChange }) => {
                     value={mensagem.conteudo || ''}
                     onChange={onChange}
                     rows={4}
+                    maxLength={255}
                     required
                 />
             </div>
@@ -83,13 +82,13 @@ const Editar = () => {
                 setMensagem(data);
                 setMessage('Mensagem atualizada com sucesso!');
                 setError(null);
-                setTimeout(() => setMessage(null), 3000); 
+                setTimeout(() => navigate('/mensagens'), 2000);
             })
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
     };
+
     return (
-    
         <Container>
             <CCard className="shadow-sm w-100">
                 <CCardHeader>
@@ -111,22 +110,22 @@ const Editar = () => {
 
                     {!loading && mensagem && Object.keys(mensagem).length > 0 && (
                         <CForm onSubmit={handleSubmit} className="grid-form">
-               
+
                             <MensagemForm mensagem={mensagem} onChange={handleChange} />
-                            
-                    
+
                             <div className="form-actions">
                                 <div className="d-flex gap-3">
                                     <CButton color="primary" type="submit" disabled={loading}>
-                                        {loading ? <CSpinner size="sm" /> : 
+                                        {loading ? <CSpinner size="sm" /> :
                                             <>
                                                 <i className="fa-solid fa-floppy-disk me-1" /> Salvar Alterações
                                             </>
                                         }
                                     </CButton>
+                                    <CButton color="secondary" onClick={() => navigate(-1)} disabled={loading}>
+                                        Cancelar
+                                    </CButton>
                                 </div>
-                                
-                               
                             </div>
                         </CForm>
                     )}

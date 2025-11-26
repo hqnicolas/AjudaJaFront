@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
     CForm,
     CFormLabel,
     CRow,
     CCol,
     CFormTextarea,
+    CFormInput,
     CSpinner
 } from '@coreui/react';
 
-import { Container } from './Nova.styles'; 
-import Button from '../../../components/Button/Button'; 
+import { Container } from './Nova.styles';
+import Button from '../../../components/Button/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export default function Nova() { 
+export default function Nova() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        remetenteId: id || '', 
+        remetenteId: id || '',
         conteudo: '',
         dataEnvio: new Date().toISOString(),
     });
 
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null); 
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (id) {
@@ -59,7 +61,7 @@ export default function Nova() {
                 setMessage(data.mensagem || 'Mensagem enviada com sucesso!');
                 setError(null);
                 setFormData({
-                    remetenteId: id || '', 
+                    remetenteId: id || '',
                     conteudo: '',
                     dataEnvio: new Date().toISOString(),
                 });
@@ -92,6 +94,7 @@ export default function Nova() {
                                 onChange={handleChange}
                                 rows={6}
                                 placeholder="Digite o texto da sua mensagem aqui..."
+                                maxLength={255}
                                 required
                             />
                         </CCol>
@@ -109,10 +112,10 @@ export default function Nova() {
                                 />
                             </CCol>
                         )}
-                        
+
                     </CRow>
 
-                    <div className="btn-submit">
+                    <div className="d-flex justify-content-center gap-3 mt-4">
                         <Button typeButton="primary" type="submit" disabled={loading}>
                             {loading ? (
                                 <>
@@ -122,6 +125,9 @@ export default function Nova() {
                             ) : (
                                 'Enviar Mensagem'
                             )}
+                        </Button>
+                        <Button typeButton="secondary" onClick={() => navigate(-1)} disabled={loading}>
+                            Cancelar
                         </Button>
                     </div>
 

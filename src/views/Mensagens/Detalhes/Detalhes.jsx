@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
-    CCard,
-    CCardBody,
-    CCardHeader,
+    CForm,
+    CFormLabel,
     CRow,
     CCol,
-    CSpinner,
-    CButton,
+    CFormTextarea,
+    CFormInput,
+    CSpinner
 } from '@coreui/react';
-import Button from '../../../components/Button/Button'; 
-import { Container,ContainerMessageDetails } from './Detalhes.styles';
+import Button from '../../../components/Button/Button';
+import { Container } from './Detalhes.styles';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Detalhes = () => {
     const { id } = useParams();
     const [mensagem, setMensagem] = useState(null);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!id) return;
@@ -29,66 +30,79 @@ const Detalhes = () => {
                 return res.json();
             })
             .then(data => setMensagem(data))
-            .catch(err => console.error(err));
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false));
     }, [id]);
 
     const formatarData = (data) => {
         return new Date(data).toLocaleString('pt-BR');
     };
 
-    if (!mensagem) {
+    if (loading) {
         return (
-            <Container className="text-center">
+            <Container>
                 <CSpinner color="primary" />
                 <p>Carregando...</p>
             </Container>
         );
     }
 
+    if (!mensagem) {
+        return (
+            <Container>
+                <p>Mensagem não encontrada.</p>
+            </Container>
+        );
+    }
+
     return (
         <Container>
-            <h1>Detalhes da Mensagem</h1>
+            <div className="forms">
+                <h2 className="text-center mb-4">Detalhes da Mensagem</h2>
 
-            <CRow className="justify-content-center w-100">
-         
-                <CCol xs={12} md={8} lg={6}>
-                    <CCard className="shadow-sm">
-                        <CCardHeader className="text-center fw-bold" style={{ color: 'var(--color-primary)' }}>
-                            Detalhes da Mensagem ID: {id}
-                        </CCardHeader>
-                        <CCardBody>
-                            <ContainerMessageDetails>
-                                <h3>Mensagem</h3>
-                                
-                                <p>
-                                    <strong>Data de Envio:</strong> {formatarData(mensagem.dataEnvio)}
-                                </p>
-                                
-                                <p className="mt-3">
-                                    <strong>Conteúdo:</strong>
-                                </p>
-                                <p style={{ backgroundColor: '#f9f9f9', padding: '15px', borderRadius: '5px', borderLeft: '3px solid var(--color-primary)' }}>
-                                    {mensagem.conteudo}
-                                </p>
+                <CForm>
+                    <CRow className="g-3">
+                        <CCol xs={12}>
+                            <CFormLabel>ID da Mensagem</CFormLabel>
+                            <CFormInput
+                                type="text"
+                                value={id}
+                                readOnly
+                                disabled
+                            />
+                        </CCol>
 
-                                <div className="d-flex flex-wrap gap-3 mt-4 w-100 justify-content-center">
-                                    <Link to={`/mensagens/editar/${id}`}>
-                                        <CButton color='info'>
-                                            <i className="fa-solid fa-pen-to-square me-1" /> Editar Mensagem
-                                        </CButton>
-                                    </Link>
-                                    <Link to="/mensagens/nova">
-                                        <Button typeButton={'secondary'}>
-                                            <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Mensagem
-                                        </Button>
-                                    </Link>
-                                   
-                                </div>
-                            </ContainerMessageDetails>
-                        </CCardBody>
-                    </CCard>
-                </CCol>
-            </CRow>
+                        <CCol xs={12}>
+                            <CFormLabel>Data de Envio</CFormLabel>
+                            <CFormInput
+                                type="text"
+                                value={formatarData(mensagem.dataEnvio)}
+                                readOnly
+                                disabled
+                            />
+                        </CCol>
+
+                        <CCol xs={12}>
+                            <CFormLabel>Conteúdo</CFormLabel>
+                            <CFormTextarea
+                                value={mensagem.conteudo}
+                                readOnly
+                                disabled
+                                rows={6}
+                            />
+                        </CCol>
+                    </CRow>
+
+                    <div className="d-flex justify-content-center gap-3 mt-4">
+                        <Button typeButton="primary" type="button" onClick={() => navigate(`/mensagens/editar/${id}`)}>
+                            Editar
+                        </Button>
+                        <Button typeButton="secondary" type="button" onClick={() => navigate(-1)}>
+                            Voltar
+                        </Button>
+                    </div>
+                </CForm>
+            </div>
         </Container>
     );
 };

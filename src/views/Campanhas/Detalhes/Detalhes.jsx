@@ -88,7 +88,7 @@ export default function Detalhes() {
             </div>
             <p>{campanha.descricao}</p>
           </div>
-        
+
         </NewDonationContainer>
       </CardComponent>
     </Container>

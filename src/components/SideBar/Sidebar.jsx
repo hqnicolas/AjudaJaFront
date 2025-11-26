@@ -10,7 +10,6 @@ import {
   Typography,
 } from '@mui/material';
 import {
-  Settings,
   InsertChart,
   People,
   Notifications,
@@ -21,19 +20,13 @@ import { logo_ajude_ja_minimizada } from '../../assets/logo';
 import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
-  const { user, logout } = useUserContext();
+  const { user } = useUserContext();
   const [open, setOpen] = useState(false);
   const toggleDrawer = () => setOpen(!open);
   const closeSidebar = () => setOpen(false);
   const soraFontSx = { fontFamily: '"Sora", sans-serif' };
 
   if (!user) return null;
-
-  const handleLogout = () => {
-    logout();
-    closeSidebar();
-    navigate('/');
-  };
 
   return (
     <>
@@ -54,7 +47,7 @@ export default function Sidebar() {
             },
           }}
         >
-          <i className="fa-solid fa-gear"></i>
+          <i className="fa-solid fa-bars"></i>
         </IconButton>
       </ToggleButtonContainer>
       <Drawer
@@ -92,7 +85,7 @@ export default function Sidebar() {
             onClick={closeSidebar}
           >
             <ListItemIcon><InsertChart /></ListItemIcon>
-                <ListItemText primary="Doações" primaryTypographyProps={{ sx: soraFontSx,fontWeight: 500,color:'var(--color-text)' }}/>
+            <ListItemText primary="Doações" primaryTypographyProps={{ sx: soraFontSx, fontWeight: 500, color: 'var(--color-text)' }} />
           </ListItemButton>
 
           <ListItemButton
@@ -101,8 +94,8 @@ export default function Sidebar() {
             onClick={closeSidebar}
           >
             <ListItemIcon><People /></ListItemIcon>
-       
-            <ListItemText primary="Usuários" primaryTypographyProps={{ sx: soraFontSx,fontWeight: 500,color:'var(--color-text)' }} />
+
+            <ListItemText primary="Usuários" primaryTypographyProps={{ sx: soraFontSx, fontWeight: 500, color: 'var(--color-text)' }} />
           </ListItemButton>
 
           <ListItemButton
@@ -111,7 +104,7 @@ export default function Sidebar() {
             onClick={closeSidebar}
           >
             <ListItemIcon><Notifications /></ListItemIcon>
-                <ListItemText primary="Mensagens" primaryTypographyProps={{ sx: soraFontSx,fontWeight: 500,color:'var(--color-text)' }} />
+            <ListItemText primary="Mensagens" primaryTypographyProps={{ sx: soraFontSx, fontWeight: 500, color: 'var(--color-text)' }} />
           </ListItemButton>
 
           <ListItemButton
@@ -120,21 +113,7 @@ export default function Sidebar() {
             onClick={closeSidebar}
           >
             <ListItemIcon><Description /></ListItemIcon>
-                <ListItemText primary="Relatórios" primaryTypographyProps={{ sx: soraFontSx,fontWeight: 500,color:'var(--color-text)' }} />
-          </ListItemButton>
-
-          <ListItemButton onClick={handleLogout}>
-            <ListItemIcon>
-              <i className="fa-solid fa-sign-out-alt"></i>
-            </ListItemIcon>
-            <ListItemText
-              primary="Logout"
-              primaryTypographyProps={{
-                sx: soraFontSx,
-                fontWeight: 500,
-                color: 'var(--color-text)',
-              }}
-            />
+            <ListItemText primary="Relatórios" primaryTypographyProps={{ sx: soraFontSx, fontWeight: 500, color: 'var(--color-text)' }} />
           </ListItemButton>
         </List>
       </Drawer>

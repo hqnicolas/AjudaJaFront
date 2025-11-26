@@ -12,10 +12,10 @@ import {
     CButton,
     CSpinner,
     CAlert,
-    CInputGroup,      
-    CInputGroupText,  
+    CInputGroup,
+    CInputGroupText,
 } from '@coreui/react';
-import { Container } from './Editar.styles'; 
+import { Container } from './Editar.styles';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -125,6 +125,7 @@ export default function EditarUsuario() {
                                         name="name"
                                         value={user.name || ''}
                                         onChange={handleChange}
+                                        maxLength={255}
                                         required
                                     />
                                 </CInputGroup>
@@ -140,6 +141,7 @@ export default function EditarUsuario() {
                                         name="email"
                                         value={user.email || ''}
                                         onChange={handleChange}
+                                        maxLength={255}
                                         required
                                     />
                                 </CInputGroup>
@@ -166,6 +168,7 @@ export default function EditarUsuario() {
                                     name="dateOfBirth"
                                     value={user.dateOfBirth || ''}
                                     onChange={handleChange}
+                                    max="9999-12-31"
                                 />
                             </div>
                             <div>
@@ -188,6 +191,7 @@ export default function EditarUsuario() {
                                     name="location"
                                     value={user.location || ''}
                                     onChange={handleChange}
+                                    maxLength={255}
                                 />
                             </div>
                             <div>
@@ -197,6 +201,7 @@ export default function EditarUsuario() {
                                     name="preferences"
                                     value={user.preferences || ''}
                                     onChange={handleChange}
+                                    maxLength={255}
                                 />
                             </div>
                             <div>
@@ -206,6 +211,7 @@ export default function EditarUsuario() {
                                     name="interests"
                                     value={user.interests || ''}
                                     onChange={handleChange}
+                                    maxLength={255}
                                 />
                             </div>
                             <div style={{ gridColumn: '1 / -1' }}>
@@ -217,7 +223,7 @@ export default function EditarUsuario() {
                                     rows={3}
                                 />
                             </div>
-       
+
                             <div style={{ gridColumn: '1 / -1' }}>
                                 <CFormLabel>Fotos (URL)</CFormLabel>
                                 <CFormInput
@@ -239,10 +245,13 @@ export default function EditarUsuario() {
                                             </>
                                         }
                                     </CButton>
-                                    <CButton color="danger" onClick={handleDelete} disabled={loading}>
-                                        <i className="fa-solid fa-trash-can me-1" /> Excluir Usuário
+                                    <CButton color="secondary" onClick={() => navigate(-1)} disabled={loading}>
+                                        Cancelar
                                     </CButton>
                                 </div>
+                                <CButton color="danger" onClick={handleDelete} disabled={loading}>
+                                    <i className="fa-solid fa-trash-can me-1" /> Excluir Usuário
+                                </CButton>
                             </div>
                         </CForm>
                     )}

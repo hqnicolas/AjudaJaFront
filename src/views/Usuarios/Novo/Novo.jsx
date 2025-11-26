@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   CForm,
   CFormInput,
@@ -16,6 +17,7 @@ import Button from '../../../components/Button/Button';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function NovoUsuario() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,6 +67,7 @@ export default function NovoUsuario() {
           photos: '',
           interests: '',
         });
+        setTimeout(() => navigate(-1), 2000);
       } else {
         setMessage(data.mensagem || 'Erro ao criar usuário');
       }
@@ -95,6 +98,7 @@ export default function NovoUsuario() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Digite o nome completo"
+                  maxLength={255}
                   required
                 />
               </CInputGroup>
@@ -113,6 +117,7 @@ export default function NovoUsuario() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="user@email.com"
+                  maxLength={255}
                   required
                 />
               </CInputGroup>
@@ -144,6 +149,7 @@ export default function NovoUsuario() {
                 name="dateOfBirth"
                 value={formData.dateOfBirth}
                 onChange={handleChange}
+                max="9999-12-31"
                 required
               />
             </CCol>
@@ -173,6 +179,7 @@ export default function NovoUsuario() {
                 value={formData.location}
                 onChange={handleChange}
                 placeholder="Cidade, Estado"
+                maxLength={255}
               />
             </CCol>
 
@@ -185,6 +192,7 @@ export default function NovoUsuario() {
                 value={formData.preferences}
                 onChange={handleChange}
                 placeholder="Ex: Adoção, Educação, Saúde..."
+                maxLength={255}
               />
             </CCol>
 
@@ -197,6 +205,7 @@ export default function NovoUsuario() {
                 value={formData.interests}
                 onChange={handleChange}
                 placeholder="Ex: tecnologia, arte, esportes..."
+                maxLength={255}
               />
             </CCol>
 
@@ -225,9 +234,12 @@ export default function NovoUsuario() {
             </CCol>
           </CRow>
 
-          <div className="btn-submit">
+          <div className="d-flex justify-content-center gap-3 mt-4">
             <Button typeButton="primary" type="submit" disabled={loading}>
               {loading ? 'Criando...' : 'Criar usuário'}
+            </Button>
+            <Button typeButton="secondary" onClick={() => navigate(-1)} disabled={loading}>
+              Cancelar
             </Button>
           </div>
 

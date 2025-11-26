@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
 
   .navbar-nav {
     flex-wrap: nowrap;
-    margin: 0 auto; 
+    /* margin: 0 auto; Removed to allow right alignment */
 
     @media (max-width: 991.98px) {
       overflow-x: auto;
@@ -46,16 +46,6 @@ export const HeaderContainer = styled.header`
     color: var(--color-primary);
     font-weight: 700;
   }
-
-  .nav-link {
-    color: var(--color-primary) !important;
-    font-weight: 600;
-  }
-
-  .nav-link:hover {
-    color: var(--color-primary-hover) !important;
-  }
-  
   
   @media (max-width: 992px) {
     img{

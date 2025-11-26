@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
-    CCard,
-    CCardBody,
-    CCardHeader,
+    CForm,
+    CFormInput,
+    CFormLabel,
+    CInputGroup,
+    CInputGroupText,
     CRow,
     CCol,
     CSpinner,
-    CButton,
+    CFormTextarea
 } from '@coreui/react';
 
-import { Container, ContainerDetails } from './Detalhes.styles';
+import { Container } from './Detalhes.styles';
 import Button from '../../../components/Button/Button';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Detalhes = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [donation, setDonation] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!id) return;
@@ -29,102 +33,157 @@ const Detalhes = () => {
                 }
                 return res.json();
             })
-            .then(data => setDonation(data))
-            .catch(err => console.error(err));
+            .then(data => {
+                if (data.receiverDate) {
+                    data.receiverDate = data.receiverDate.slice(0, 10);
+                }
+                setDonation(data)
+            })
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false));
     }, [id]);
 
-    const formatarData = (data) => {
-        if (!data) return 'N/A';
-        if (typeof data === 'string' && data.includes('/')) {
-            const [day, month, year] = data.split('/');
-         
-            return new Date(`${year}-${month}-${day}`).toLocaleDateString('pt-BR');
-        }
-        return new Date(data).toLocaleDateString('pt-BR');
-    };
-
-    if (!donation) {
+    if (loading) {
         return (
-            <Container className="text-center">
+            <Container>
                 <CSpinner color="primary" />
                 <p>Carregando...</p>
             </Container>
         );
     }
 
+    if (!donation) {
+        return (
+            <Container>
+                <p>Doação não encontrada.</p>
+            </Container>
+        );
+    }
+
     return (
         <Container>
-            <h1>Detalhes da Doação</h1>
+            <div className="forms">
+                <h2 className="text-center mb-4">Detalhes da Doação</h2>
 
-            <CRow className="justify-content-center w-100">
-                <CCol xs={12} md={8} lg={6}>
-                    <CCard className="shadow-sm">
-                        <CCardHeader className="text-center fw-bold" style={{ color: 'var(--color-primary)' }}>
-                            Detalhes da Doação ID: {id}
-                        </CCardHeader>
-                        <CCardBody>
-                            <ContainerDetails>
-                                <h3>Informações da Doação</h3>
+                <CForm>
+                    <CRow className="g-3">
+                        <CCol md={6}>
+                            <CFormLabel>Nome da Doação</CFormLabel>
+                            <CInputGroup>
+                                <CInputGroupText>
+                                    <i className="fa-solid fa-box" />
+                                </CInputGroupText>
+                                <CFormInput
+                                    type="text"
+                                    value={donation.name || ''}
+                                    readOnly
+                                    disabled
+                                />
+                            </CInputGroup>
+                        </CCol>
 
-                                <p>
-                                    <strong>Nome da Doação:</strong> {donation.name || 'N/A'}
-                                </p>
-                                <p>
-                                    <strong>Tipo de Doação:</strong> {donation.type || 'N/A'}
-                                </p>
-                                <p>
-                                    <strong>Quantidade:</strong> {donation.quantity || 'N/A'}
-                                </p>
-                                <p>
-                                    <strong>Estoque:</strong> {donation.donor || 'Local'}
-                                </p>
-                                <p>
-                                    <strong>Data de Recebimento:</strong> {formatarData(donation.receiverDate)}
-                                </p>
-                                <p>
-                                    <strong>Data de Expiração:</strong> {formatarData(donation.expiryDate)}
-                                </p>
-                                
-                                {donation.details && (
-                                    <>
-                                        <p className="mt-3">
-                                            <strong>Detalhes Adicionais:</strong>
-                                        </p>
-                                        <div className="content-block">
-                                            {donation.details}
-                                        </div>
-                                    </>
-                                )}
+                        <CCol md={6}>
+                            <CFormLabel>Tipo</CFormLabel>
+                            <CFormInput
+                                type="text"
+                                value={donation.type || ''}
+                                readOnly
+                                disabled
+                            />
+                        </CCol>
 
-                                {donation.report && (
-                                    <div className="mt-3 w-100">
-                                        <h3>Relatório da Doação:</h3>
-                                        <a href={donation.report} target="_blank" rel="noopener noreferrer" className="d-block mt-2">
-                                            <Button typeButton={'secondary'}>
-                                                <i className="fa-solid fa-file-csv me-1" /> Baixar Relatório
-                                            </Button>
-                                        </a>
-                                    </div>
-                                )}
+                        <CCol md={6}>
+                            <CFormLabel>Quantidade</CFormLabel>
+                            <CInputGroup>
+                                <CInputGroupText>
+                                    <i className="fa-solid fa-hashtag" />
+                                </CInputGroupText>
+                                <CFormInput
+                                    type="number"
+                                    value={donation.quantity || ''}
+                                    readOnly
+                                    disabled
+                                />
+                            </CInputGroup>
+                        </CCol>
 
-                                <div className="d-flex flex-wrap gap-3 mt-4 w-100 justify-content-center">
-                                    <Link to={`/doacoes/editar/${id}`}>
-                                        <CButton color="info" className="text-dark">
-                                            <i className="fa-solid fa-pen-to-square me-1" /> Editar Doação
-                                        </CButton>
-                                    </Link>
-                                    <Link to="/doacoes/novo">
-                                        <Button typeButton={'secondary'} >
-                                            <i className="fa-solid fa-plus me-1 mt-1" /> Criar Nova Doação
+                        <CCol md={6}>
+                            <CFormLabel>Armazém</CFormLabel>
+                            <CInputGroup>
+                                <CInputGroupText>
+                                    <i className="fa-solid fa-hands-helping" />
+                                </CInputGroupText>
+                                <CFormInput
+                                    type="text"
+                                    value={donation.donor || ''}
+                                    readOnly
+                                    disabled
+                                />
+                            </CInputGroup>
+                        </CCol>
+
+                        <CCol md={6}>
+                            <CFormLabel>Data de Recebimento</CFormLabel>
+                            <CFormInput
+                                type="date"
+                                value={donation.receiverDate || ''}
+                                readOnly
+                                disabled
+                            />
+                        </CCol>
+
+                        <CCol md={6}>
+                            <CFormLabel>Período de Validade (dias)</CFormLabel>
+                            <CInputGroup>
+                                <CInputGroupText>
+                                    <i className="fa-solid fa-calendar-days" />
+                                </CInputGroupText>
+                                <CFormInput
+                                    type="number"
+                                    value={donation.validityPeriod || ''}
+                                    readOnly
+                                    disabled
+                                />
+                            </CInputGroup>
+                        </CCol>
+
+                        {donation.details && (
+                            <CCol md={12}>
+                                <CFormLabel>Detalhes Adicionais</CFormLabel>
+                                <CFormTextarea
+                                    value={donation.details}
+                                    readOnly
+                                    disabled
+                                    rows={3}
+                                />
+                            </CCol>
+                        )}
+
+                        {donation.report && (
+                            <CCol md={12}>
+                                <CFormLabel>Relatório</CFormLabel>
+                                <div>
+                                    <a href={donation.report} target="_blank" rel="noopener noreferrer">
+                                        <Button typeButton={'secondary'}>
+                                            <i className="fa-solid fa-file-csv me-1" /> Baixar Relatório
                                         </Button>
-                                    </Link>
+                                    </a>
                                 </div>
+                            </CCol>
+                        )}
 
-                            </ContainerDetails>
-                        </CCardBody>
-                    </CCard>
-                </CCol>
-            </CRow>
+                    </CRow>
+
+                    <div className="d-flex justify-content-center gap-3 mt-4">
+                        <Button typeButton="primary" type="button" onClick={() => navigate(`/doacoes/editar/${donation.id}`)}>
+                            Editar
+                        </Button>
+                        <Button typeButton="secondary" type="button" onClick={() => navigate(-1)}>
+                            Voltar
+                        </Button>
+                    </div>
+                </CForm>
+            </div>
         </Container>
     );
 };
